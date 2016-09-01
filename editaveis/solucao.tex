@@ -15,7 +15,11 @@ FIGURA DA EAP AQUI!
 
 \subsection{Navegação} % (fold)
 \label{sub:automação}
-	Definição detalhada da solução em relação a navegação. (João Paulo)
+	A solução referente à navegação possui enfoque principal no algoritmo de controle que trabalhará a trajetória a ser percorrida, a identificação de obstáculos e replanejamento da trajetória e a lógica de controle para retorno à base. Diversas possibilidades foram estudadas e analisadas, desde o planejamento de rota partindo com formato espiral, até trajetórias aleatórias com simples desvios de obstáculos.
+
+	A partir e comparações e estudo de concorrentes, como o robô \textit{Roomba}\footnote{https://www.irobot.com.br/}, por exemplo, observou-se que na grande maioria, o sistema de navegação escolhido pelos fabricantes é baseado em trajetórias aleatórias. Segundo \cite{robo_limpeza_domesti}, a utilização de navegação aleatória garante um bom desempenho, já que com o passar do tempo, o robô consegue acessar o cômodo como um todo. Dessa forma, optou-se pela utilização de um algoritmo de navegação baseado em trajetória aleatória para o desenvolvimento do sistema \textit{R2-PI2}.
+
+	Um dos grandes problemas encontrados na navegação é referente a volta à base por parte do robô. Identificar onde a base se encontra e traçar uma rota até a mesma é uma tarefa que necessita de algumas ferramentas, como a utilização de sinais e sensores para comunicação entre a base e o robô. Para isso, optou-se pela utilização de 3 (três) sensores infra-vermelho emitidos pela base com uma angulação de 45º entre eles, fazendo com que o robô possa identificar o sinal e navegar até sua fonte, a base.
 % subsection automação (end)
 
 \subsection{Estrutura} % (fold)
