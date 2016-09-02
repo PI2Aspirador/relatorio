@@ -1,0 +1,107 @@
+
+O planejamento financeiro do projeto leva em consideração o custo de aquisição dos materiais necessários para desenvolvimento da solução proposta, assim como a estratégia de recolhimento do orçamento necessário. Como a solução proposta está dividida em sub-sistemas, utilizou-se da mesma lógica para determinar o custo dos materiais. O sub-sistema referente a solução de software não possui custo, já que não será necessária a aquisição de nenhum componente.
+
+Na tabela \ref{tab:custo_eletronica} estão dispostos os componentes, o preço dos mesmos, a quantidade necessária e o preço total.
+
+\begin{table}[H]
+\centering
+\caption{Custos eletrônica.}
+\label{tab:custos_eletronica}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textit{\textbf{Componente}}                                         & \textit{\textbf{Quantidade}} & \textit{\textbf{Preço}} & \textit{\textbf{Total}} \\ \hline
+Emissor IR                                                           & 8                            & R\$ 0,61                & R\$ 4,88                \\ \hline
+Receptor IR                                                          & 5                            & R\$ 0,48                & R\$ 2,40                \\ \hline
+CD 4051                                                              & 1                            & R\$ 1,30                & R\$ 1,30                \\ \hline
+\begin{tabular}[c]{@{}c@{}}AMP OP \\ (LM3324)\end{tabular}           & 3                            & R\$ 0,61                & R\$ 1,83                \\ \hline
+Arduíno Mega                                                         & 1                            & R\$ 137,50              & R\$ 137,50              \\ \hline
+Raspberry PI 2B                                                      & 1                            & R\$ 299,90              & R\$ 299,90              \\ \hline
+Módulo Wifi                                                          & 1                            & R\$ 23,00               & R\$ 23,00               \\ \hline
+Ponte H 298N                                                         & 1                            & R\$ 21,90               & R\$ 21,90               \\ \hline
+Módulo encoder                                                       & 2                            & R\$ 6,44                & R\$ 12,88               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Resistores, Leds \\ e outros\end{tabular} & -                            & -                       & R\$ 10,00               \\ \hline
+\rowcolor[HTML]{FD6864} 
+\multicolumn{3}{|c|}{\cellcolor[HTML]{FD6864}\textbf{TOTAL}}                                                                  & R\$ 515,59              \\ \hline
+\end{tabular}
+\end{table}
+
+Em relação a solução da estrutura, duas soluções possíveis estão em estudo, os componentes da primeira solução podem ser observados a partir da tabela \ref{tab:chassi1}.
+
+\begin{table}[H]
+\centering
+\caption{Estrutura chassi - solução 1}
+\label{tab:chassi1}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textit{\textbf{Componente}}                                 & \textit{\textbf{Quantidade}} & \textit{\textbf{Preço}} & \textit{\textbf{Total}} \\ \hline
+Motores                                                      & 2                            & R\$ 37,00               & R\$ 74,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Roldanas \\ pequenas\end{tabular} & 2                            & R\$ 2,50                & R\$ 5,00                \\ \hline
+\begin{tabular}[c]{@{}c@{}}Roldanas\\ grandes\end{tabular}   & 4                            & R\$ 4,00                & R\$ 16,00               \\ \hline
+Corrente de bicicleta                                        & 1                            & R\$ 10,00               & R\$ 10,00               \\ \hline
+Parafusos                                                    & -                            & -                       & R\$ 20,00               \\ \hline
+Multifixadores                                               & -                            & -                       & R\$ 5,00                \\ \hline
+\rowcolor[HTML]{FD6864} 
+\multicolumn{3}{|c|}{\cellcolor[HTML]{FD6864}\textbf{TOTAL}}                                                          & R\$ 515,59              \\ \hline
+\end{tabular}
+\end{table}
+
+já em relação a segunda solução, temos a tabela \ref{tab:chassi2}.
+
+\begin{table}[H]
+\centering
+\caption{Estrutura chassi - solução 2}
+\label{tab:chassi2}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textit{\textbf{Componente}}                                 & \textit{\textbf{Quantidade}} & \textit{\textbf{Preço}} & \textit{\textbf{Total}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Kit motor\\ redução\end{tabular}  & 2                            & R\$ 24,90               & R\$ 49,80               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Roda\\ esférica\end{tabular}      & 1                            & R\$ 17,95               & R\$ 17,95               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Chapa de \\ alumínio\end{tabular} & 1                            & R\$ 24,90               & R\$ 24,90               \\ \hline
+Chapa de PVC                                                 & 1                            & R\$ 17,00               & R\$ 17,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Chapa de\\ acrílico\end{tabular}  & 1                            & R\$ 54,90               & R\$ 54,90               \\ \hline
+\rowcolor[HTML]{FD6864} 
+\multicolumn{3}{|c|}{\cellcolor[HTML]{FD6864}\textbf{TOTAL}}                                                          & R\$ 164,55              \\ \hline
+\end{tabular}
+\end{table}
+
+Em relação aos componentes da base, \ref{tab:base_custos}.
+
+\begin{table}[H]
+\centering
+\caption{Custos base.}
+\label{tab:base_custos}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textit{\textbf{Componente}}                                            & \textit{\textbf{Quantidade}} & \textit{\textbf{Preço}} & \textit{\textbf{Total}} \\ \hline
+Cooler                                                                  & 2                            & R\$ 10,00               & R\$ 20,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Chapa de\\ poliestireno cristal\end{tabular} & 1                            & R\$ 40,00               & R\$ 40,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Cola para\\ acrílico\end{tabular}            & 1                            & R\$ 26,00               & R\$ 26,00               \\ \hline
+Mangueira                                                               & -                            & -                       & R\$ 52,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Vasilha de\\ plástico\end{tabular}           & 1                            & R\$ 10,00               & R\$ 10,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Anéis de\\ vedação\end{tabular}              & 4                            & R\$ 8,00                & R\$ 32,00               \\ \hline
+\begin{tabular}[c]{@{}c@{}}Espuma para\\ filtro\end{tabular}            & 1                            & R\$ 10,00               & R\$ 10,00               \\ \hline
+\rowcolor[HTML]{FD6864} 
+\textbf{TOTAL}                                                          &                              &                         & R\$ 190                 \\ \hline
+\end{tabular}
+\end{table}
+
+Em relação a alimentação do sistema, pode-se observar a tabela \ref{tab:custos_alimentacao}.
+
+\begin{table}[H]
+\centering
+\caption{Custos da alimentação do sistema}
+\label{tab:custos_alimentacao}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textit{\textbf{Componente}} & \textit{\textbf{Quantidade}}                     & \textit{\textbf{Preço}}                    & \textit{\textbf{Total}}                    \\ \hline
+Bateria                      & 1                                                & 200-500                                    & 200-500                                    \\ \hline
+\rowcolor[HTML]{FD6864} 
+\textbf{TOTAL}               & \multicolumn{3}{c|}{\cellcolor[HTML]{FD6864}\begin{tabular}[c]{@{}c@{}}Entre 200 e\\ 500 R\$ a depender da bateria escolhida\end{tabular}} \\ \hline
+\end{tabular}
+\end{table}
+
+O valor total estimado para a produção do robô utilizando a solução de chassi 1 e a estimativa mais cara de bateria, que seria em torno de 500 R\$, seria de 1325,59 R\$. Caso seja escolhida a solução de chassi 2, e a bateria mais cara, o preço do projeto passa a ser 1360,14 R\$.
+
+O dinheiro para a compra dos materiais utilizados durante o processo de fabricação será dividido de forma igual entre todos os integrantes do grupo.
+
+Contudo, integrantes da equipe já possuem diversos componentes necessários para a produção, como rodas, motores, caixas de redução, arduino e raspberry, o que acaba reduzindo bastante o orçamento.
