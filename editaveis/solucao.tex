@@ -484,40 +484,6 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
 \subsection{Controle} % (fold)
 	\label{sub:controle}
 
-	\subsubsection{Formas de controle de Sistemas}
-
-		“Um sistema de controle é um conjunto de componentes organizados de forma a conseguir uma resposta desejada de um sistema”, \cite{mello}. Para cada função de uma máquina que se deseja controlar deve haver um sistema de controle especifico. Existem dois tipos de controle: o de malha aberta e o de malha fechada, e um sistema de controle é dividido em subsistemas e agrupamentos de processos, a fim de se obter saídas por meio do desempenho desejado de acordo com a entrada utilizada especificamente \cite{mello}.
-
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.5]{figuras/sistema_controle.png}
-			\caption{Sistema de controle representado em blocos. Fonte \cite{mello}.}
-			\label{img:sistema_controle}
-		\end{figure}
-
-		Para o desenvolvimento de um sistema de controle são necessários alguns elementos básicos, demonstrados na figura abaixo, são eles:
-
-		\begin{itemize}
-			\item Planta: Objeto real a ser controlado.
-			\item Variável de controle: saída do sistema.
-			\item Valor esperado: valor desejado da variável de controle baseados nos requisitos do sistema.
-			\item Controlador: Agente que calcula o sinal de controle necessário.
-			\item Atuador: dispositivo que transforma energia em algum tipo de movimento.
-			\item Sensor: dispositivo que converte um elemento físico em um sinal.
-			\item Distúrbio: Fator inesperado.
-		\end{itemize}
-
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.4]{figuras/diagrama_blocos_controle.png}
-			\caption{Diagrama de blocos de um sistema de controle. Fonte \cite{mello}.}
-			\label{img:diagrama_sistema_controle}
-		\end{figure}
-
-		No controle de malha aberta (Open Loop Systems), não há realimentação, somente um sinal de controle na entrada e é esperado que na saída à variável controlada consiga atingir um determinado valorou comportamento desejado. Nesse tipo de sistema não é observada evolução do processo para determinação do sinal de controle. A entrada não depende da saída, então um dos problema desse tipo de sistema é que só é possível ter a saída esperada se não ocorrer perturbações internas e externas, por que o controlador continuará funcionando normalmente, como se não tivesse ocorrido qualquer perturbação e a resposta não terá valor para as novas características do sistema \cite{silva}. As principais vantagens de se utilizar esse sistema de controle é o custo e a simplicidade.
-
-		Já no controlador de malha fechada (Closed Loop Systems), o sistema tem controle retroativo, realimentado, onde necessita de informações da saída do controle por meio de sensores ou transdutores que compara o sinal de saída com uma referência e corrige a saída caso ela esteja desviada dos parâmetros programados \cite{silva}. As principais vantagens em se utilizar esse sistema de controle são a rejeição a perturbações, atenuação de ruídos, melhor controle do estado transitório, menor sensibilidade a mudança de parâmetros, entre outros. A principal desvantagem é o aumento da complexidade e custo do sistema.
-
 		\subsubsubsection{Sistema de Controle do R2-PI2}
 
 			A parte de controle tem como objetivo desenvolver um sistema capaz de monitorar e controlar a movimentação do aspirador para garantir que os motores sejam devidamente alimentados e juntamente com a parte de instrumentação e comunicação possa garantir a locomoção do robô durante a limpeza sem riscos de colisão com obstáculos.
