@@ -7,6 +7,29 @@ FIGURA DA EAP AQUI!
 \section{Requisitos do sistema} % (fold)
 \label{sub:requisitos_do_sistema}
 
+Os requisitos do sistema estão apresentados na tabela \ref{tab:requisitos}.
+
+\begin{table}[H]
+\centering
+\caption{Requisitos do sistema}
+\label{tab:requisitos}
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textit{\textbf{Requisitos Gerais}}                                                                 & \textit{\textbf{Requisitos Específicos}}            \\ \hline
+                                                                                                    & Aspirar o pó                                        \\ \cline{2-2} 
+                                                                                                    & Se locomover pelo ambiente                          \\ \cline{2-2} 
+                                                                                                    & Responder a obstáculos no ambiente                  \\ \cline{2-2} 
+\multirow{-4}{*}{Limpar um cômodo}                                                                  & Se comunicar com a central de processamento         \\ \hline
+                                                                                                    & Retornar a base                                     \\ \cline{2-2} 
+                                                                                                    & Gerenciar status da bateria                         \\ \cline{2-2} 
+\multirow{-3}{*}{Se recarregar sozinho}                                                             & Recarregar a bateria                                \\ \hline
+                                                                                                    & Possuir sistema de acompanhamento do status do robô \\ \cline{2-2} 
+                                                                                                    & Possuir sistema de agendamento de limpeza           \\ \cline{2-2} 
+                                                                                                    & Possuir sistema de start/stop                       \\ \cline{2-2} 
+\multirow{-4}{*}{\begin{tabular}[c]{@{}c@{}}Possuir sistema de controle\\ a distância\end{tabular}} & Gerar relatório de atividades                       \\ \hline
+\end{tabular}
+\end{table}
 % section requisitos_do_sistema (end)
 \section{Alimentação} % (fold)
 \label{sub:alimentação}
@@ -54,17 +77,6 @@ FIGURA DA EAP AQUI!
 			\label{img:rascunho1}
 		\end{figure}
 
-		\subsubsection{Orçamento da solução 1}
-
-			As aquisições necessárias estão listadas abaixo:
-			\begin{itemize}
-				\item 2 motores com caixa de redução = R\$ 74 ,00
-				\item 2 roldanas pequenas= R\$5,00
-				\item 4 roldanas grandes = R\$ 16,00
-				\item Corrente de bicicleta = R\$10,00
-				\item Parafusos = R\$20,00
-				\item Multi fixadores = R\$ 5,00
-			\end{itemize}
 
 		\subsection{Solução 2} % (fold)
 		\label{sub:solução_2}
@@ -148,7 +160,7 @@ FIGURA DA EAP AQUI!
 			\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.8]{figuras/tabela_acrilico.png}
-				\caption{Valores de propriedades mecânicas do Acrílico. Adaptado de http://www.indac.org.br/arquivos/acrilico\_indac.pdf}
+				\caption[Valores de propriedades mecânicas do Acrílico]{Valores de propriedades mecânicas do Acrílico. Adaptado de http://www.indac.org.br/arquivos/acrilico\_indac.pdf}
 				\label{img:acrilico}
 			\end{figure}
 
@@ -167,21 +179,10 @@ FIGURA DA EAP AQUI!
 
 			Ambos os materiais apresentam boa resistência à tração e podem ser aplicados ao projeto e irão proteger os circuitos, baterias, motores e outros equipamentos sensíveis em seu interior. A placa de acrílico ou de PVC cortado e usinado para se encaixar na estrutura montada utilizando parafusos e porcas. Os parafusos irão facilitar o trabalho de encaixe e desencaixe da tampa de acrílico para ajustes e limpezas das peças, além de fixar melhor. Se a tampa fosse colada na estrutura não haveria essa possibilidade.
 
-			\subsubsection{Orçamento}
-
-			\begin{itemize}
-				\item 2 Kit motor redução – R\$ 49,80
-				\item 1 roda esférica – R\$ 17,95
-				\item Chapa de alumínio – R\$ 24,90 
-				\item Chapa de PVC – 220cm x 110cm x 10mm - R\$ 17,00
-				\item Chapa de acrílico 100cm x 50cm x 2mm – R\$ 54,90
-			\end{itemize}
-		% subsection solução_2 (end)
-
 	% subsection solução_1 (end)
 % section alimentação (end)
 
-\section{Estrutura da Base} % (fold)
+\section{Estrutura da Base de Recarga} % (fold)
 \label{sec:estrutura_da_base}
 	
 	O robô terá uma base de recarga automática responsável pelo guiamento do sistema pelo ambiente, pelo recarregamento da bateria e por abrigar e alimentar o Raspberry Pi que fará os cálculos de movimento do sistema.
@@ -204,17 +205,7 @@ FIGURA DA EAP AQUI!
 			\caption{Estrutura da base de recarga.}
 			\label{img:estrutura_base}
 		\end{figure}	
-
-	\subsection{Orçamento} % (fold)
-	\label{sub:orçamento}
-		
-		\begin{itemize}
-			\item Chapa de alumínio – R\$ 24,90 
-			\item Chapa de PVC – 220cm x 110cm x 10mm - R\$ 17,00
-			\item Chapa de acrílico 100cm x 50cm x 2mm – R\$ 54,90
-			\item Conectores de carga Xperia Z3 – R\$ 55,00
-		\end{itemize}	
-	% subsection orçamento (end)	
+	
 
 	% subsection solução (end)
 % section estrutura_da_base (end)
@@ -242,7 +233,9 @@ FIGURA DA EAP AQUI!
 			\label{img:succao}
 		\end{figure}
 
-		$\frac{v^{2}}{2} + gh + \frac{p}{\rho} = constante$ ou $\frac{\rho v^{2}}{2} + \rho gh + p = constante$
+		\begin{equation}\label{1}
+		\frac{v^{2}}{2} + gh + \frac{p}{\rho} = constante ou \frac{\rho v^{2}}{2} + \rho gh + p = constante
+		\end{equation}
 
 		$v$ = velocidade do fluido ao longo do condutor
 
@@ -256,9 +249,11 @@ FIGURA DA EAP AQUI!
 
 		Segue a equação da continuidade na sua forma de integral:
 
-		$\frac{dq}{dt} + \iint_{s}^{ }j . dS= \sum$, onde
-
-		$S$ é qualquer superficie fechada imaginária, com um volume V
+		\begin{equation}
+		\frac{dq}{dt} + \iint_{s}^{ }j . dS= \sum
+		\end{equation}
+		
+		onde $S$ é qualquer superficie fechada imaginária, com um volume V;
 
 		$\iint_{s}^{ }dS$ se refere a integral de superficie sobre a superficie fechada
 
@@ -278,20 +273,6 @@ FIGURA DA EAP AQUI!
 			\label{img:analise_fluxo}
 		\end{figure}
 
-		\subsection{Orçamento} % (fold)
-		\label{sub:orçamento}
-			
-			A lista de peças necessárias para o sistema de sucção é:
-			\begin{itemize}
-				\item Dois coolers de 120mm x 120mm - R\$ 20,00
-				\item Chapa de Poliestireno Cristal (Parece Acrílico) 100cm x 50 cm x 2 mm - R\$ 40,00
-				\item Cola para Acrílico Reverstsul 100ml - R\$ 26,00
-				\item Mangueira de saída de Ar (secadoras) - R\$ 52,00
-				\item Vasilha de plastico - R\$ 10,00
-				\item 4 Aneis de vedação - 4 x R\$ 8,00
-				\item Espuma para filtro de poeira - R\$ 10,00
-			\end{itemize}
-		% subsection orçamento (end)
 
 
 	% subsection solução (end)
@@ -328,7 +309,7 @@ FIGURA DA EAP AQUI!
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.5]{figuras/diagrama_blocos_controle.png}
+			\includegraphics[scale=0.4]{figuras/diagrama_blocos_controle.png}
 			\caption{Diagrama de blocos de um sistema de controle. Fonte \cite{mello}.}
 			\label{img:diagrama_sistema_controle}
 		\end{figure}
@@ -345,7 +326,7 @@ FIGURA DA EAP AQUI!
 
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.6]{figuras/diagrama_blocos_R2PI2.png}
+				\includegraphics[scale=0.55]{figuras/diagrama_blocos_R2PI2.png}
 				\caption{Diagrama de blocos do sistema de controle do R2-PI2. Fonte \cite{mello}.}
 				\label{img:diagrama_sistema_controle}
 			\end{figure}
@@ -365,7 +346,7 @@ FIGURA DA EAP AQUI!
 
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.6]{figuras/configH.png}
+						\includegraphics[scale=0.3]{figuras/configH.png}
 						\caption{Configurações da Ponte H.}
 						\label{img:configH}
 					\end{figure}
@@ -386,17 +367,22 @@ FIGURA DA EAP AQUI!
 
 					Segundo \cite{ahmedi}, a tensão média de saída é dada por
 
-					$V0 = \frac{Ton.vi}{T}$
-
+					\begin{equation}\label{3}
+						V0 = \frac{Ton.vi}{T}
+					\end{equation}
 					Onde  é a tensão média de saída,  é o período em segundos em que o sinal fica em nível alto, T o período total do sinal e Vi a tensão de nível alto.
 
 					A potência de saída do sinal pode ser descrita como:
 
-					$P = V0 . I0$
+					\begin{equation}
+					P = V0 . I0
+					\end{equation}
 
 					Sendo P a potência de saída,  a tensão de saída e  a corrente de saída. Portanto a partir das equações anteriores pode-se afirmar que:
 
-					$V0 = Vi . d$
+					\begin{equation}
+					V0 = Vi . d
+					\end{equation}
 
 					onde:
 
@@ -404,11 +390,15 @@ FIGURA DA EAP AQUI!
 
 					sendo  o duty cycle. A partir da lei de Ohm tem-se então que :
 
-					$I0 = \frac{d . Vi}{R}$
+					\begin{equation}
+					I0 = \frac{d . Vi}{R}
+					\end{equation}
 
 					E a potência de saída é dada por:
 
-					$P0 = \frac{(D . Vi)^{2}}{R}$
+					\begin{equation}
+					P0 = \frac{(D . Vi)^{2}}{R}
+					\end{equation}
 
 					Considerando-se uma carga totalmente resistiva, pode-se controlar a potência entregue de maneira proporcional a largura de pulso ao quadrado.
 
