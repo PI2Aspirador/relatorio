@@ -85,14 +85,14 @@ FIGURA DA EAP AQUI!
         	\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.7]{figuras/motor_roda.png}
-				\caption{Kit motor redução. Disponível em http://www.huinfinito.com.br/motores/787-motor-com-engrenagem-de-reducao-3-6v-90-graus.html?search\_query=roda\&results=7}
+				\caption{Kit motor redução.}
 				\label{img:kit_motor}
 			\end{figure}
 
 			\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.7]{figuras/esfera.png}
-				\caption{Roda do tipo esfera. Disponível em http://produto.mercadolivre.com.br/MLB-772876471-roda-boba-robot-caster-esfera-roda-rodinha-pra-robotica-robo-\_JM}
+				\caption{Roda do tipo esfera.}
 				\label{img:esfera}
 			\end{figure}
 
@@ -309,7 +309,8 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 % section contextualização (end)
 
 \label{sub:instrumentação}
- parte de instrumentação tem como principal objetivo solucionar o problema de colisão indesejada com a parede e outros móveis presentes na casa, para isso se faz necessário o uso de alguns componentes relativamente simples porem com grande aplicação, são eles:
+
+A parte de instrumentação tem como principal objetivo solucionar o problema de colisão indesejada com a parede e outros móveis presentes na casa, para isso se faz necessário o uso de alguns componentes relativamente simples porem com grande aplicação, são eles:
  
   \subsection{Sensor de distância por infravermelho} 
   \label{sub:Sensor_de_distância_por_infravermelho}
@@ -464,6 +465,148 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
   Com esse modelo, é possível realizar conexões com a internet e enviar informações ao usuário ou a um banco de dados, por exemplo.
 
+\subsection{Controle} % (fold)
+	\label{sub:controle}
+
+	\subsubsection{Formas de controle de Sistemas}
+
+		“Um sistema de controle é um conjunto de componentes organizados de forma a conseguir uma resposta desejada de um sistema”, \cite{mello}. Para cada função de uma máquina que se deseja controlar deve haver um sistema de controle especifico. Existem dois tipos de controle: o de malha aberta e o de malha fechada, e um sistema de controle é dividido em subsistemas e agrupamentos de processos, a fim de se obter saídas por meio do desempenho desejado de acordo com a entrada utilizada especificamente \cite{mello}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{figuras/sistema_controle.png}
+			\caption{Sistema de controle representado em blocos. Fonte \cite{mello}.}
+			\label{img:sistema_controle}
+		\end{figure}
+
+		Para o desenvolvimento de um sistema de controle são necessários alguns elementos básicos, demonstrados na figura abaixo, são eles:
+
+		\begin{itemize}
+			\item Planta: Objeto real a ser controlado.
+			\item Variável de controle: saída do sistema.
+			\item Valor esperado: valor desejado da variável de controle baseados nos requisitos do sistema.
+			\item Controlador: Agente que calcula o sinal de controle necessário.
+			\item Atuador: dispositivo que transforma energia em algum tipo de movimento.
+			\item Sensor: dispositivo que converte um elemento físico em um sinal.
+			\item Distúrbio: Fator inesperado.
+		\end{itemize}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{figuras/diagrama_blocos_controle.png}
+			\caption{Diagrama de blocos de um sistema de controle. Fonte \cite{mello}.}
+			\label{img:diagrama_sistema_controle}
+		\end{figure}
+
+		No controle de malha aberta (Open Loop Systems), não há realimentação, somente um sinal de controle na entrada e é esperado que na saída à variável controlada consiga atingir um determinado valorou comportamento desejado. Nesse tipo de sistema não é observada evolução do processo para determinação do sinal de controle. A entrada não depende da saída, então um dos problema desse tipo de sistema é que só é possível ter a saída esperada se não ocorrer perturbações internas e externas, por que o controlador continuará funcionando normalmente, como se não tivesse ocorrido qualquer perturbação e a resposta não terá valor para as novas características do sistema \cite{silva}. As principais vantagens de se utilizar esse sistema de controle é o custo e a simplicidade.
+
+		Já no controlador de malha fechada (Closed Loop Systems), o sistema tem controle retroativo, realimentado, onde necessita de informações da saída do controle por meio de sensores ou transdutores que compara o sinal de saída com uma referência e corrige a saída caso ela esteja desviada dos parâmetros programados \cite{silva}. As principais vantagens em se utilizar esse sistema de controle são a rejeição a perturbações, atenuação de ruídos, melhor controle do estado transitório, menor sensibilidade a mudança de parâmetros, entre outros. A principal desvantagem é o aumento da complexidade e custo do sistema.
+
+		\subsubsection{Sistema de Controle do R2-PI2}
+
+			A parte de controle tem como objetivo desenvolver um sistema capaz de monitorar e controlar a movimentação do aspirador para garantir que os motores sejam devidamente alimentados e juntamente com a parte de instrumentação e comunicação possa garantir a locomoção do robô durante a limpeza sem riscos de colisão com obstáculos.
+
+			O controlador por ora escolhido, Arduino, irá controlar o funcionamento dos motores carrinho e dos sensores. Abaixo encontra-se o diagrama de blocos para o sistema em malha fechada do controle do R2-P12.
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[scale=0.6]{figuras/diagrama_blocos_R2PI2.png}
+				\caption{Diagrama de blocos do sistema de controle do R2-PI2. Fonte \cite{mello}.}
+				\label{img:diagrama_sistema_controle}
+			\end{figure}
+
+			Como mostrado no diagrama, o controlador irá enviar sinais para os motores permitindo que eles sejam ligados ou desligados, fazendo o carrinho se movimentar de acordo com os parâmetros medidos pelos sensores infravermelhos (IR). 
+
+			Serão utilizados sensores IR configurados como detectores de proximidade, na parte frontal  e lateral do aspirador, evitando possíveis colisões com obstáculos em seu caminho, e embaixo dele para evitar vãos como escadas e impedir a queda do robô. Encoderes serão utilizados como controle de posição e também no auxílio da movimentação das rodas quando o aspirador girar para desviar de obstáculos. O monitoramento será contínuo, portanto sempre que houver algum obstáculo ao alcance dos sensores , o controlador enviará um sinal para os motores, impedindo que ocorra choques com objetos no caminho. 
+
+			Será monitorado também, o nível de bateria do robô, quando ele estiver abaixo de um limite que será estabelecido, o controlador enviará um sinal para que o robô possa então retornar para a base e carregar sua bateria. Os componentes envolvidos nessa área são apresentados a seguir.
+
+			\begin{enumerate}
+				\item \textbf{Ponte H}:
+
+					Para que se possa controlar a direção e a velocidade dos motores , é necessário que a corrente elétrica possa fluir nas duas direções dentro de sua bobina, gerando campos magnéticos com intensidade e sentidos opostos. A configuração mais utilizada para controlar a corrente nesse projeto é um driver em ponte H (INOUE e OSUKA, 2004).
+
+					O circuito da Ponte H é constituído por quatro transistores que atuam como chave e que, dependendo da configuração do chaveamento, determinam o sentido de rotação dos motores, como pode ser observado na Figura \ref{img:configH}.
+
+					\begin{figure}[H]
+						\centering
+						\includegraphics[scale=0.6]{figuras/configH.png}
+						\caption{Configurações da Ponte H.}
+						\label{img:configH}
+					\end{figure}
+
+					A princípio a ponte H escolhida segue o modelo apresentado na Figura \ref{img:modeloH}. 
+
+					\begin{figure}[H]
+						\centering
+						\includegraphics[scale=0.6]{figuras/modeloH.png}
+						\caption{Ponte H.}
+						\label{img:modeloH}
+					\end{figure}
+
+					A escolha foi feita baseando-se na compatibilidade do drive com os motores que devem ser utilizados na movimentação do aspirador.
+				\item \textbf{PWM}:
+
+					O controle das velocidades dos motores será feito por meio de chaveamento em frequência constante, gerado pelas saídas digitais do controlador. Para isso utiliza-se o conceito de Pulse-Width Modulation (Modulação por largura de pulso), ou PWM. Com uma onda quadrada com frequência constante e razão cíclica (duty cycle) ajustável , é possível transferir uma determinada quantidade de potência desejável através do valor médio de tensão do sinal \cite{ahmedi}.
+
+					Segundo \cite{ahmedi}, a tensão média de saída é dada por
+
+					$V0 = \frac{Ton.vi}{T}$
+
+					Onde  é a tensão média de saída,  é o período em segundos em que o sinal fica em nível alto, T o período total do sinal e Vi a tensão de nível alto.
+
+					A potência de saída do sinal pode ser descrita como:
+
+					$P = V0 . I0$
+
+					Sendo P a potência de saída,  a tensão de saída e  a corrente de saída. Portanto a partir das equações anteriores pode-se afirmar que:
+
+					$V0 = Vi . d$
+
+					onde:
+
+					$d = \frac{Ton}{T}$
+
+					sendo  o duty cycle. A partir da lei de Ohm tem-se então que :
+
+					$I0 = \frac{d . Vi}{R}$
+
+					E a potência de saída é dada por:
+
+					$P0 = \frac{(D . Vi)^{2}}{R}$
+
+					Considerando-se uma carga totalmente resistiva, pode-se controlar a potência entregue de maneira proporcional a largura de pulso ao quadrado.
+
+					Deve-se observar a frequência de trabalho, para não ultrapassar os limites do hardware de potência em casos onde há carga indutivas, como motores, é necessário pulsar uma frequência que faça a corrente estável para uma mesma largura de pulso, suavizando assim o movimento do motor.
+
+				\item \textbf{Encoder}:
+
+					Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
+
+					\begin{figure}[H]
+						\centering
+						\includegraphics[scale=0.6]{figuras/encoder.png}
+						\caption{Sistema de funcionamento de um encoder absoluto.}
+						\label{img:encoder}
+					\end{figure}
+
+					A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders [3]. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
+
+					Para esse projeto escolheu-se o módulo encoder P17 \ref{img:modulo_encoder} que realiza a leitura do sentido do giro e pode ser integrado ao Arduíno.
+
+					\begin{figure}[H]
+						\centering
+						\includegraphics[scale=0.6]{figuras/modulo_encoder.png}
+						\caption{Módulo encoder.}
+						\label{img:modulo_encoder}
+					\end{figure}
+
+			\end{enumerate}
+
+
+
+	% subsection controle (end)
+% section instrumentação (end)
 
 \section{Interface} % (fold)
 \label{sub:interface}
