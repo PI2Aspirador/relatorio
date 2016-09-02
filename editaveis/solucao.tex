@@ -1,6 +1,6 @@
 Primeiramente começamos com a apresentação da solução proposta (tarefa que está com o Jair), sem apresentar nenhum detalhe técnico nem nada parecido, apenas explicando o funcionamento da solução. 
 
-Esta solução está organizada segundo a EAP (Estrutura analítica do projeto) apresentada na figura x, destacando os entregáveis e seus sub-sistemas ao longo de todo o projeto.
+Esta solução está organizada segundo a EAP (Estrutura analítica do projeto) apresentada na Figura \ref{img:eap}, destacando os entregáveis e seus sub-sistemas ao longo de todo o projeto.
 
 \begin{figure}[H]
 	\centering
@@ -38,7 +38,34 @@ Os requisitos do sistema estão apresentados na tabela \ref{tab:requisitos}.
 % section requisitos_do_sistema (end)
 \section{Alimentação} % (fold)
 \label{sub:alimentação}
-	Definição detalhada da solução em relação a alimentação (Luan)
+	A equipe de engenharia de energia tem como meta desenvolver o sistema de alimentação para o funcionamento do robô aspirador. Existem diversas possibilidades de fornecer a energia necessária pra suprir a potência requerida pelo sistema, sendo que a mais usual seria a utilização de baterias, que podem ser sintetizadas como um conjunto de pilhas responsável por transformar energia química em energia elétrica, por meio de duas placas de composição diferente, chamadas eletrodos, sendo sempre um positivo e um negativo. 
+
+	A fonte de alimentação ideal para o sistema segue alguns requisitos essenciais, como ter autonomia mínima de 30 minutos (tempo suficiente para aspirar um cômodo). Alguns parâmetros como tensão e corrente ainda não podem ser definidos nesta etapa do projeto. Buscando as alternativas disponíveis dentro desse universo nos deparamos com a opção das baterias NIMH, que apresenta uma gama com alguns modelos disponíveis e com valores variáves de tensão e corrente.
+	
+	A recarga dessas baterias varia de acordo com a potência fornecida por cada uma, no entanto alguns fabricantes produzem carregadores que retiram a tensão alternada de 220v, 60Hz para a tensão contínua da bateria escolhida. O manual do carregador informa o tempo máximo de recarga de 45 minutos para o modelo mais potente de bateria, número esse que pode ser de apenas 15 minutos em alguns casos. Dentre as opções disponíveis, estão dispostas três nas imagens abaixo (18v, 14.4v e 12.4v/ 3,3Ah e 2,6Ah).
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.55]{figuras/bateria_1.png}
+		\caption{Bateria de 14.4v.}
+		\label{img:bateria_1}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.55]{figuras/bateria_2.png}
+		\caption{Bateria de 12.4v.}
+		\label{img:bateria_2}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.55]{figuras/bateria_3.png}
+		\caption{Bateria de 18v.}
+		\label{img:bateria_3}
+	\end{figure}
+
+	Uma outra alternativa para suprir a alimentação do aspirador seria o uso de supercapacitores. Tal opção oferece um valor consideravelmente maior de ciclos de carga (10 000 contra 400-6000), além um tempo de recarga muito reduzido se comparado com as baterias. Entre os fatores desfavoráveis pode-se citar a fragilidade, que acarreta em um maior cuidado no manuseio, o elevado custo de mercado além  da falta de informações técnicas obtidas até o momento.
 % section alimentação (end)
 
 \section{Navegação} % (fold)
@@ -88,6 +115,8 @@ Os requisitos do sistema estão apresentados na tabela \ref{tab:requisitos}.
 			
 			O robô aspirador terá forma circular. Esse formato foi escolhido para facilitar as manobras de curvas, aumentando a área que ele irá percorrer. Outra vantagem que esse formato fornece é a questão do controle autônomo dele, assim facilita a distribuição dos sensores e o próprio controle do movimento do robô, pois resulta em menos erros. A estrutura do robô deve ser tal para suportar as cargas dos equipamentos do interior do robô como os sensores, motores, coolers e o sistema de sucção sem que sofra deformações. Além dessas forças deve-se também ser resistente à fadiga, já que estará sujeito a cargas contínuas e repetidas, e a impactos contra objetos ou paredes. Um material que já é utilizado em muitas aplicações pois apresenta boa propriedades é o Alumínio. A tabela a seguir mostra alguns valores das propriedades mecânicas do alumínio.
 
+
+			ARRUMAR TABELA!!!!!
 			\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.8]{figuras/tabela_estru1.png}
@@ -161,11 +190,11 @@ Os requisitos do sistema estão apresentados na tabela \ref{tab:requisitos}.
 			\end{table}
 
 			A parte superior da estrutura, ou seja, a tampa, será fabricada em PVC ou em acrílico. A escolha de um material plástico deve-se a facilidade de manuseio, facilitando molda-lo à forma desejada. Deixa a estrutura mais leve, fazendo com que o motor realize menos trabalho, e pode suportar valores altos de cargas, resistindo a impactos. O material acrílico (METACRILATO DE METILA) possui (densidade relativa de 1.19 g/cm3), resistente a água e boa resistência segundo a Figura \ref{img:acrilico}:
-
+			ARRUMAR TABELA!!!!!
 			\begin{figure}[H]
 				\centering
 				\includegraphics[scale=0.8]{figuras/tabela_acrilico.png}
-				\caption[Valores de propriedades mecânicas do Acrílico]{Valores de propriedades mecânicas do Acrílico. Adaptado de http://www.indac.org.br/arquivos/acrilico\_indac.pdf}
+				\caption[Valores de propriedades mecânicas do Acrílico]{Valores de propriedades mecânicas do Acrílico. Adaptado de \href{http://www.indac.org.br/arquivos/acrilico\_indac.pdf}{Indac}.}
 				\label{img:acrilico}
 			\end{figure}
 
@@ -239,7 +268,13 @@ Os requisitos do sistema estão apresentados na tabela \ref{tab:requisitos}.
 		\end{figure}
 
 		\begin{equation}\label{1}
-		\frac{v^{2}}{2} + gh + \frac{p}{\rho} = constante ou \frac{\rho v^{2}}{2} + \rho gh + p = constante
+		\frac{v^{2}}{2} + gh + \frac{p}{\rho} = constante
+		\end{equation}
+		
+		ou
+		
+		\begin{equation}
+		\frac{\rho v^{2}}{2} + \rho gh + p = constante
 		\end{equation}
 
 		$v$ = velocidade do fluido ao longo do condutor
@@ -282,33 +317,6 @@ Os requisitos do sistema estão apresentados na tabela \ref{tab:requisitos}.
 
 	% subsection solução (end)
 % section aspirador (end)
-\section{Comunicação} % (fold)
-\label{sub:comunicação}
-	De acordo com o apresentado nesta documentação de projeto, a solução proposta envolve diversos módulos funcionais, como o robô em si, a base fixa, e o sistema de controle. A partir de uma visão de alto nível do projeto, como a apresentada na Figura \ref{img:arq_comu}, é possível observar de maneira clara os módulos que deverão se comunicar para garantir o funcionamento do sistema como um todo.
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.8]{figuras/arquitetura_comunicacao.png}
-		\caption{Arquitetura de comunicação do sistema}
-		\label{img:arq_comu}
-	\end{figure}
-
-	Com o objetivo de garantir que a solução seja confiável e resistente a situações críticas, como a falta de internet, por exemplo, o sistema foi planejado para disponibilizar uma sub-rede interna, tendo como fonte a base de recarga do robô. Cada módulo que necessita de comunicação deverá se conectar a rede, viabilizando o funcionamento do sistema mesmo em momentos com falha de internet, já que todos os envolvidos compartilham o mesmo ambiente.
-
-	A comunicação entre o robô (\textit{arduino}) e a base (raspberry) fará uso desta rede wifi, a partir da utilização de um módulo wifi, o \textit{arduino} poderá acessar a rede, possibilitando a comunicação via tcp/ip. Já a \textit{raspberry} se conectará a rede via cabo \textit{ethernet}.
-
-	O roteador utilizado é da familia D-link, seguindo o protocolo de certificação WPA2, que utiliza o EAS (Advanced Encryption Standard), como sistema de encriptação. Segundo \cite{wpa2}, este protocolo possui uma confiabilidade bem maior que a encontrada em seu antecessor, WPA. Ainda de acordo com \cite{wpa2}, este sistema de segurança envolve um algoritmo de criptografia robusto, utilizando chaves de 128 a 256 bits maximizando a segurança da rede.
-
-
-	O núcleo da rede, ou seja, o ponto central da comunicação do sistema se encontra na base de recarga do robô, que está detalhada no tópico a seguir.
-
-	\subsection{Base de regarga}
-
-	A base de recarga do robô sustentará todo o sistema de inteligência da solução, assim como a sub-rede que possibilitará a comunicação entre os módulos. Será utilizada uma \textit{raspberry PI} como servidor central do sistema, processando e controlando toda a solução. O servidor será implementado utilizando a tecnologia Ruby on Rails, no sistema operacional \textit{Raspbian} (Debian).
-
-	Além da sustentação da \textit{raspberry}, é necessário sustentar um roteador D-link 524 para implementação e sustentação da rede wifi que será utilizada como meio de comunicação do sistema, e 3 (três) emissores infra-vermelho, utilizados para retorno do robô à base.
-	
-% section comunicação (end)
 
 \section{Sensoriamento} % (fold)
 \subsection{Contextualização}
@@ -541,20 +549,20 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
 					Segundo \cite{ahmedi}, a tensão média de saída é dada por
 
 					\begin{equation}\label{3}
-						V0 = \frac{Ton.vi}{T}
+						V_{0} = \frac{Ton.vi}{T}
 					\end{equation}
 					Onde  é a tensão média de saída,  é o período em segundos em que o sinal fica em nível alto, T o período total do sinal e Vi a tensão de nível alto.
 
 					A potência de saída do sinal pode ser descrita como:
 
 					\begin{equation}
-					P = V0 . I0
+					P = V_{0} . I_{0}
 					\end{equation}
 
 					Sendo P a potência de saída,  a tensão de saída e  a corrente de saída. Portanto a partir das equações anteriores pode-se afirmar que:
 
 					\begin{equation}
-					V0 = Vi . d
+					V_{0} = Vi . d
 					\end{equation}
 
 					onde:
@@ -564,13 +572,13 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
 					sendo  o duty cycle. A partir da lei de Ohm tem-se então que :
 
 					\begin{equation}
-					I0 = \frac{d . Vi}{R}
+					I_{0} = \frac{d . Vi}{R}
 					\end{equation}
 
 					E a potência de saída é dada por:
 
 					\begin{equation}
-					P0 = \frac{(D . Vi)^{2}}{R}
+					P_{0} = \frac{(D . Vi)^{2}}{R}
 					\end{equation}
 
 					Considerando-se uma carga totalmente resistiva, pode-se controlar a potência entregue de maneira proporcional a largura de pulso ao quadrado.
@@ -605,6 +613,35 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
 
 	% subsection controle (end)
 % section instrumentação (end)
+
+
+\section{Comunicação} % (fold)
+\label{sub:comunicação}
+	De acordo com o apresentado nesta documentação de projeto, a solução proposta envolve diversos módulos funcionais, como o robô em si, a base fixa, e o sistema de controle. A partir de uma visão de alto nível do projeto, como a apresentada na Figura \ref{img:arq_comu}, é possível observar de maneira clara os módulos que deverão se comunicar para garantir o funcionamento do sistema como um todo.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.8]{figuras/arquitetura_comunicacao.png}
+		\caption{Arquitetura de comunicação do sistema}
+		\label{img:arq_comu}
+	\end{figure}
+
+	Com o objetivo de garantir que a solução seja confiável e resistente a situações críticas, como a falta de internet, por exemplo, o sistema foi planejado para disponibilizar uma sub-rede interna, tendo como fonte a base de recarga do robô. Cada módulo que necessita de comunicação deverá se conectar a rede, viabilizando o funcionamento do sistema mesmo em momentos com falha de internet, já que todos os envolvidos compartilham o mesmo ambiente.
+
+	A comunicação entre o robô (\textit{arduino}) e a base (raspberry) fará uso desta rede wifi, a partir da utilização de um módulo wifi, o \textit{arduino} poderá acessar a rede, possibilitando a comunicação via tcp/ip. Já a \textit{raspberry} se conectará a rede via cabo \textit{ethernet}.
+
+	O roteador utilizado é da familia D-link, seguindo o protocolo de certificação WPA2, que utiliza o EAS (Advanced Encryption Standard), como sistema de encriptação. Segundo \cite{wpa2}, este protocolo possui uma confiabilidade bem maior que a encontrada em seu antecessor, WPA. Ainda de acordo com \cite{wpa2}, este sistema de segurança envolve um algoritmo de criptografia robusto, utilizando chaves de 128 a 256 bits maximizando a segurança da rede.
+
+
+	O núcleo da rede, ou seja, o ponto central da comunicação do sistema se encontra na base de recarga do robô, que está detalhada no tópico a seguir.
+
+	\subsection{Base de recarga}
+
+	A base de recarga do robô sustentará todo o sistema de inteligência da solução, assim como a sub-rede que possibilitará a comunicação entre os módulos. Será utilizada uma \textit{raspberry PI} como servidor central do sistema, processando e controlando toda a solução. O servidor será implementado utilizando a tecnologia Ruby on Rails, no sistema operacional \textit{Raspbian} (Debian).
+
+	Além da sustentação da \textit{raspberry}, é necessário sustentar um roteador D-link 524 para implementação e sustentação da rede wifi que será utilizada como meio de comunicação do sistema, e 3 (três) emissores infra-vermelho, utilizados para retorno do robô à base.
+	
+% section comunicação (end)
 
 \section{Interface} % (fold)
 \label{sub:interface}

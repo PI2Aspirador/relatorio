@@ -36,7 +36,7 @@ Os processos de gerenciamento de riscos serão realizados pelo Scrum master de p
  \begin{table}[H]
 	\centering
 	\caption{Matriz de probabilidade de riscos do R2-PI2.}
-	\label{my-label}
+	\label{tab:probabilidade}
 	\begin{tabular}{|c|c|}
 		\hline
 		\rowcolor[HTML]{C0C0C0} 
@@ -79,12 +79,23 @@ Os processos de gerenciamento de riscos serão realizados pelo Scrum master de p
  	
  	A partir das outras matrizes apresentadas anteriormente, é criada a matriz de probabilidade e impacto. As notas de impacto e probabilidade foram multiplicadas para chegar a uma nota final de risco.
 
- 	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.8]{figuras/matriz_probab.png}
-		\caption{Matriz de probabilidade e impacto.}
-		\label{img:modeloH}
-	\end{figure}
+ 	\begin{table}[]
+\centering
+\caption{Matriz de probabilidade e impacto.}
+\label{tab:matriz_probabilidade_impacto}
+\begin{tabular}{|c|ccccc}
+\cline{1-1}
+\textbf{Probabilidade} &                                                &                                                 &                                                 &                                                 &                                                 \\ \hline
+5             & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}5} & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}10} & \multicolumn{1}{c|}{\cellcolor[HTML]{FE0000}15} & \multicolumn{1}{c|}{\cellcolor[HTML]{FE0000}20} & \multicolumn{1}{c|}{\cellcolor[HTML]{FE0000}25} \\ \hline
+4             & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}4} & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}8}  & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}12} & \multicolumn{1}{c|}{\cellcolor[HTML]{FE0000}16} & \multicolumn{1}{c|}{\cellcolor[HTML]{FE0000}20} \\ \hline
+3             & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}3} & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}6}  & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}9}  & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}12} & \multicolumn{1}{c|}{\cellcolor[HTML]{FE0000}15} \\ \hline
+2             & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}2} & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}4}  & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}6}  & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}8}  & \multicolumn{1}{c|}{\cellcolor[HTML]{F8FF00}10} \\ \hline
+1             & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}1} & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}2}  & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}3}  & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}4}  & \multicolumn{1}{c|}{\cellcolor[HTML]{34FF34}5}  \\ \hline
+\textbf{Impacto}       & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{2}                          & \multicolumn{1}{c|}{3}                          & \multicolumn{1}{c|}{4}                          & \multicolumn{1}{c|}{5}                          \\ \hline
+\end{tabular}
+\end{table}
+
+Escape special TeX symbols (%, &, _, #, $
 
 	A cor verde na tabela representa risco mínimo. A cor amarela representa risco médio e a cor vermelha representa risco alto. A estratégia a ser adotada para cada escala de risco identificada está apresentada na tabela \ref{tab:legprob}. 
 
