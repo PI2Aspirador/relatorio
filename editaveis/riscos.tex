@@ -54,8 +54,53 @@ Os processos de gerenciamento de riscos serão realizados pelo Scrum master de p
  \label{sub:matriz_de_impacto_dos_riscos}
  
  Para chegar em uma nota final de impacto para o risco, foram considerados 4 aspectos principais: Custo, Tempo, Escopo e Qualidade.
+
+ \begin{table}[H]
+\centering
+\caption{Matriz de impacto de riscos.}
+\label{tab:matriz_impacto}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textit{\textbf{Custo}}}  & \textit{\textbf{\begin{tabular}[c]{@{}c@{}}Muito baixo\\ (nota 1)\end{tabular}}}                                & \textit{\textbf{\begin{tabular}[c]{@{}c@{}}Baixo\\ (nota 2)\end{tabular}}}                & \textit{\textbf{\begin{tabular}[c]{@{}c@{}}Médio\\ (nota 3)\end{tabular}}}                           & \textit{\textbf{\begin{tabular}[c]{@{}c@{}}Alto\\ (nota 4)\end{tabular}}}                                       & \textit{\textbf{\begin{tabular}[c]{@{}c@{}}Muito alto\\ (nota 5)\end{tabular}}}                  \\ \cline{2-6} 
+                                          & \begin{tabular}[c]{@{}c@{}}Até 2\% no \\ orçamento\end{tabular}                                                 & \begin{tabular}[c]{@{}c@{}}De 2 a 5\% \\ no orçamento\end{tabular}                        & \begin{tabular}[c]{@{}c@{}}De 5 a 8\% \\ no orçamento\end{tabular}                                   & \begin{tabular}[c]{@{}c@{}}De 8 a 10\% \\ no orçamento\end{tabular}                                             & \begin{tabular}[c]{@{}c@{}}Acima de 10\% \\ no orçamento\end{tabular}                            \\ \hline
+\multirow{2}{*}{\textit{\textbf{Tempo}}}  & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Até 2\% no \\ prazo total\end{tabular}}                              & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}De 2 a 5\% \\ no prazo\end{tabular}}           & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}De 5 a 8\% \\ no prazo\end{tabular}}                      & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}De 8 a 10\%\\  no prazo\end{tabular}}                                & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Acima de 10\%\\  no prazo\end{tabular}}               \\
+                                          &                                                                                                                 &                                                                                           &                                                                                                      &                                                                                                                 &                                                                                                  \\ \hline
+\multirow{2}{*}{\textit{\textbf{Escopo}}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Impacto \\ insignificante na\\ qualidade do \\ projeto\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Mudança \\ impactará no\\  custo\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Mudança \\ impactará no \\ custo e no tempo\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Mudança \\ impactará no \\ custo, tempo \\ e qualidade\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Produto final \\ do projeto é \\ inútil\end{tabular}} \\
+                                          &                                                                                                                 &                                                                                           &                                                                                                      &                                                                                                                 &                                                                                                  \\ 
+                                          &                                                                                                                 &                                                                                           &                                                                                                      &                                                                                                                 &      \\ 
+                                          &                                                                                                                 &                                                                                           &                                                                                                      &                                                                                                                 &      \\ \hline
+\end{tabular}
+\end{table}
  % subsection matriz_de_impacto_dos_riscos (end)
+
  % section probabilidade_e_impacto_de_riscos (end) 
+ \section{Planejamento de Resposta aos Riscos} % (fold)
+ \label{sec:planejamento_de_resposta_aos_riscos}
+ 	
+ 	A partir das outras matrizes apresentadas anteriormente, é criada a matriz de probabilidade e impacto. As notas de impacto e probabilidade foram multiplicadas para chegar a uma nota final de risco.
+
+ 	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.8]{figuras/matriz_probab.png}
+		\caption{Matriz de probabilidade e impacto.}
+		\label{img:modeloH}
+	\end{figure}
+
+	A cor verde na tabela representa risco mínimo. A cor amarela representa risco médio e a cor vermelha representa risco alto. A estratégia a ser adotada para cada escala de risco identificada está apresentada na tabela \ref{tab:legprob}. 
+
+	\begin{table}[H]
+		\centering
+		\caption{Legenda matriz de probabilidade}
+		\label{tab:legprob}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textit{\textbf{Zona}}                   & \textit{\textbf{Prioridade}} & \textit{\textbf{Pontuação}} & \textit{\textbf{Estratégia}}                                                      \\ \hline
+			{\color[HTML]{009901} \textbf{Verde}}    & Baixa                        & de 0 a 4                    & Aceitação                                                                         \\ \hline
+			{\color[HTML]{FFCB2F} \textbf{Amarelo}}  & Média                        & de 5 a 14                   & \begin{tabular}[c]{@{}c@{}}Aceitação ou \\ mitigação\end{tabular}                 \\ \hline
+			{\color[HTML]{FE0000} \textbf{Vermelho}} & Alta                         & de 16 a 25                  & \begin{tabular}[c]{@{}c@{}}Eliminação, mitigação \\ ou transferência\end{tabular} \\ \hline
+		\end{tabular}
+	\end{table}
+ % section planejamento_de_resposta_aos_riscos (end)
 
 
 % section responsabilidade_dos_riscos_da_equipe_do_projeto (end)
