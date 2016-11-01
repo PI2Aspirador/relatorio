@@ -12,6 +12,49 @@
 	\subsection{Software} % (fold)
 	\label{sub:software}
 		
-		Apresentar aqui os detalhes de software...
+		Para realização da comunicação, está sendo utilizado o protocolo de comunicação TCP, enviando e recebendo dados a partir de uma conexão via \textit{sockets} em uma rede criada por um roteador fixo na base. A estratégia de comunicação foi pensada com o objetivo de possibilitar o funcionamento de diversos robôs em uma residência, utilizando a mesma base de processamento. Desse modo, o servidor executado na \textit{raspberry}, em C, aguarda por conexões que podem ser feitas por qualquer cliente que deseje conectar na porta correta (definida neste projeto como 8090).
+
+		Ao identificar uma conexão, uma \textit{thread} é gerada para tratar aquela conexão, entrando em um loop infinito até que o cliente ou o servidor opte por encerrar a conexão. Toda a comunicação realizada entre o robô e a base é feita a partir desta \textit{thread}.
+
+		Quando a \textit{thread} para tratamento da conexão é lançada, a mesma faz a criação de uma nova \textit{thread} que executará paralelamente a ela, que será responsável por enviar comandos ao robô. Ou seja, são criadas duas \textit{threads} para tratar uma mesma conexão, uma \textit{thread} responsável por obter os dados enviados pelo robô e outra responsável por processar estes dados e enviar comandos ao robô.
+
+		Como apenas um canal de comunicação é utilizado, foi necessário utilizar um protocolo que define os padrões de comunicação entre o servidor e o robô. Este protocolo envolve duas partes, onde a primeira representa o \textit{tipo de informação} e a segunda parte representa a \textit{informação} em si. A tabela \ref{tab:protocolo_comunicacao1} apresenta os padrões já definidos e implementados no sistema em relação a comunicação do servidor para o robô.
+
+		\begin{table}[H]
+		\centering
+		\caption{Padrões de comunicação - Servidor-Robô}
+		\label{tab:protocolo_comunicacao1}
+		\begin{tabular}{|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Servidor -\textgreater Robô}} \\ \hline
+		\textbf{Padrão}           & \textbf{Descrição}             \\ \hline
+		\textit{L 90}             & Virar 90º a esquerda           \\ \hline
+		R 90                      & Virar 90º a direita            \\ \hline
+		F 10                      & Andar 10cm a frente            \\ \hline
+		S                         & Stop                           \\ \hline
+		\textit{R}                & Run                            \\ \hline
+		\textit{B 10}             & Andar 10cm para trás           \\ \hline
+		\textit{B}                & Voltar para base               \\ \hline
+		\end{tabular}
+		\end{table}
+
+		Já na tabela \ref{tab:protocolo_comunicacao2} estão apresentados os padrões referentes a comunicação do robô para o servidor.
+
+		\begin{table}[H]
+		\centering
+		\caption{Padrões de comunicação - Robô-Servidor}
+		\label{tab:protocolo_comunicacao2}
+		\begin{tabular}{|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Robô -\textgreater Servidor}} \\ \hline
+		\textbf{Padrão}        & \textbf{Descrição}                \\ \hline
+		\textit{L 90}          & Distância esquerda: 90cm          \\ \hline
+		R 90                   & Distância direita: 90cm           \\ \hline
+		F 10                   & Distancia frente: 10cm            \\ \hline
+		B 45                   & Bateria 45\%                      \\ \hline
+		\textit{P 42}          & Potência do sinal wifi: 42        \\ \hline
+		\end{tabular}
+		\end{table}
+
 	% subsection software (end)
 % section comunicação (end)
