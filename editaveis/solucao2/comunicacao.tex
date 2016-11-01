@@ -56,5 +56,11 @@
 		\end{tabular}
 		\end{table}
 
+		Com a utilização destes padrões de comunicação, ficou fácil implementar um \textit{porteiro} de cada lado que seja capaz de distribuir as informações para seus respectivos contextos. Esta é a estratégia básica de comunicação entre os dois módulos, mas para isso, uma estrutura foi inicialmente desenvolvida.
+
+		Para realização da comunicação entre os módulos e cliente, faz-se necessário um sistema de autenticação na rede e no sistema de gerenciamento de limpezas. Para isso, foi levantada uma base Ldap de autenticação, utilizando o protocolo RADIUS para conexão na rede. O sistema de gerenciamento de limpezas pode cadastrar novos usuários, incluindo-os na base Ldap, para que o mesmo cadastro realizado no sistema possa ser utilizado para login na rede.
+
+		A arquitetura do sistema, apresentada na seção \ref{sub:arquitetura} registra de maneira clara o funcionamento do sistema de comunicação do projeto. 
+
 	% subsection software (end)
 % section comunicação (end)
