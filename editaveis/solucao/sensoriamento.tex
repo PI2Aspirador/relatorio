@@ -15,34 +15,55 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 % subsection instrumentação (end)
 
-A parte de instrumentação tem como principal objetivo solucionar o problema de colisão indesejada com a parede e outros móveis presentes na casa, para isso se faz necessário o uso de alguns componentes relativamente simples porem com grande aplicação, são eles:
- 
-  \subsubsection{Sensor de distância por infravermelho} 
-  \label{sub:Sensor_de_distância_por_infravermelho}
-    É possível utilizar um par formado por um LED emissor e um receptor de infravermelho para a detecção de obstáculos em robótica, como descrito por Lee e Chong (2011).  Essa solução será adotada no presente projeto para a detecção de objetos no trajeto do robô e segurança do protótipo \cite{detectar_objeto}.
+	Na robótica móvel um dos tipos mais importantes de sensores são os que medem distância (Braunl, 2006)(inserir referência). A parte de instrumentação do robô tem como principais objetivos auxiliar na navegação, solucionando o problema de colisão indesejada com a parede e outros móveis presentes na casa, e monitorar elementos vitais para certificar o funcionamento do mesmo.
 
-    A solução foi escolhida devido a facilidade de obtenção dos componentes e baixo custo além da possibilidade de projetar o sensor ao invés de realizar a compra do módulo pronto, diminuindo mais ainda os custos de produção do robô aspirador.
+	Para isso, o robô do \textit{R2-PI2} será equipado com dois tipos de sensores de distância, apresentados na sessão \ref{sub:Medição_de_distância}, bem como um circuito medidor de bateria, apresentado na sessão \ref{sub:Medidor_de_bateria}
 
-    O circuito da figura abaixo serve para validar o sistema de detecção de obstáculos.
+\subsubsection{Medição de distância}
+\label{sub:Medição_de_distância}
+	Os sensores de distância escolhidos para equipar o robô do \textit{R2-PI2} são apresentados a seguir.
+  
+  \begin{enumerate}
+  	\item \textbf{Sensor de distância por ultrassom}:
 
-    \begin{figure}[H]                                       
-      \centering                                            
-      \includegraphics[scale=0.3]{figuras/sensor_proximidade.png} 
-      \caption{Circuito de um sensor de proximidade usando LED emissor de infravermelho e um fototransistor.}    
-      \label{img:sensor_proximidade}                                
-    \end{figure}                                            
+  		Os sensores que medem distância por meio de ondas de ultrassom (acima de 20kHz para não ser percebido pela audição humana) tem como princípio de funcionamento a emissão de um sinal acústico que em um determinado intervalo de tempo, ao encontrar um obstáculo, retorna ao local de origem. Se o sinal retornar dentro de um tempo limite (determinado pelo sensor escolhido), significa que um objeto foi detectado e a distância do sensor ao obstáculo é calculada com base na velocidade de propagação da onda sonora (340 m/s) e o tempo decorrido entre a emissão e a recepção do sinal.
+  		
+  		\begin{equation}
+  		\label{eq:equação_ultrassom}
+  			Distância = \frac{tempo\ de\ ida\ e\ volta\ do\ sinal\ *\ velocidade\ do\ som}{2}
+  		\end{equation}
 
-    A luz infravermelha gerada pelo LED emissor é refletida pelo objeto onde ela incide e atinge o fototransistor receptor que entra na sua zona de condução. Dependendo da quantidade de luz refletida de volta para o fototransistor, ele detecta o objeto a frente. 
+  		O sensor de ultrassom escolhido para o robô R2-PI2 foi o HC-SR04 que envia um sinal sinal com duração de 10 microsegundos e envia 8 pulsos de 40KHz para aguardar o retorno do sinal pelo receptor. Esse sensor mede distâncias entre 2 centímetros e 4 metros, datasheet disponível em \cite{datasheet_ultrassom}. A escolha deste sensor foi motivada pela facilidade de acesso ao componente e pela faixa que ele mede. Para desviar com segurança dos obstáculos estima-se que ele deverá ser detectado a 10 centímetros de distância do robô permitindo que sejam executados movimentos que desviem do objeto com segurança.
 
-    \begin{figure}[H]                                                           
-      \centering                                                                
-      \includegraphics[scale=0.5]{figuras/funcionamento_sensor_obstaculo.png}               
-      \caption{ Esquema de funcionamento do sensor de obstáculos por IR (infravermelho).}    
-      \label{img:esquema_sensor_proximidade}                                            
-    \end{figure}         
+  		(inserir figura ultrassom aqui)
 
-    Através do circuito então, quando um objeto se aproximar do sensor, a uma distância mínima que será especificada, um sinal será emitido para o controlador que irá acionará os motores para desviarem do obstáculo, para garantir a eficiência dessa solução serão utilizados no mínimo 5 sensores, 3 na parte inferior de forma a analisar a frente e as laterais do robô, um na parte superior para detectar a proximidade de obstáculos altos como mesas, e um abaixo do aspirador para indicar um possível desnivelamento a fim de evitar uma queda do mesmo.
-                                                                                               
+    	Além de detectar os objetos que estão a frente do caminho percorrido pelo robô, é importante que seja possível saber qual o menor caminho de retorno do robô a base. Isso significa que muitas vezes o robô deverá saber em qual dos lados há um obstáculo mais longe (direito ou esquerdo). Para facilitar essa tomada de decisão, o robô terá, além do sensor frontal, dois sensores laterais (um no lado direito e outro no lado esquerdo). Adicionalmente, será instalado um sensor na parte traseira do robô que facilitará a entrada dele na base de recarregamento. O sistemas de navegação será explorado melhor posteriormente. 
+
+    	(inserir figura aqui modelo aqui)
+
+    	Portanto, o robô terá quatro sensores ultrassom instalados na sua estrutura evitando o choque com obstáculos e permitindo a navegação dele no cômodo que será limpado.
+
+
+
+  	\item \textbf{sensor de distância por infravermelho}
+
+  		O sensor infravermelho (IR) não utiliza o mesmo princípio de funcionamento do sensor ultrassom porque o tempo que um fóton leva para ir de um lugar a outro é muito pequeno. Ela também se baseia na emissão e detecção de um luz a uma determinada frequência. No entanto, ao invés de medir o tempo que isso leva, os sensores de IR medem o ângulo de detecção e a quantidade de luz refletida que varia de acordo com a distância entre o sensor e o objeto que refletiu a luz (Embedded Robotics). Assim, é possível utilizar um par formado por um LED emissor e um receptor de infravermelho para a detecção de obstáculos em robótica, como descrito por Lee e Chong (2011).  Essa solução será adotada no presente projeto para a detecção de desníveis ou degraus no percurso do robô a fim de garantir a segurança do protótipo. \cite{detectar_objeto}
+
+  		\begin{figure}[H]                                                           
+      		\centering                                                                
+      		\includegraphics[scale=0.5]{figuras/funcionamento_sensor_obstaculo.png}               
+      		\caption{Esquema de funcionamento do sensor de obstáculos por IR (infravermelho).}    
+      		\label{img:esquema_sensor_proximidade}                                            
+    	\end{figure}     
+
+    	A luz infravermelha gerada pelo LED emissor é refletida pelo objeto onde ela incide e atinge o fototransistor receptor que entra na sua zona de condução. Dependendo da quantidade de luz refletida de volta para o fototransistor, ele detecta o objeto a frente.
+
+    	O sensor de IR escolhido foi o TCRT5000 devido a facilidade de obtenção e baixo custo, além da possibilidade de projetar o sensor ao invés de realizar a compra do módulo pronto, diminuindo mais ainda os custos de produção do robô aspirador. Esse sensor mede até 2.5 centímetros, datasheet disponível em \cite{datasheet_ir}, por isso, caso o sensor detecte que a distância entre ele e o chão supera 2.5 centímetros, o robô irá parar e recalcular sua rota.
+
+
+  \end{enumerate}
+  	
+
   \subsubsection{Medidor de Bateria}
   \label{sub:Medidor_de_bateria}
     O aspirador de pó não pode ficar sem bateria no meio da execução da limpeza. Para conferir o nível de bateria, será utilizado um comparador de tensão. De forma que, assim que o medidor verificar que o nível da bateria está ficando muito reduzido, um sinal será enviado ao microprocessador que irá interromper o ciclo de limpeza e enviar o robô para a base de carregamento.
@@ -67,6 +88,7 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
       \label{img:arduino_mega}                                             
     \end{figure}                                                       
 
+ 	\textbf{Características:}
     \begin{itemize}
       \item Microcontrolador: ATmega2560
       \item Voltagem de Alimentação: 5V
