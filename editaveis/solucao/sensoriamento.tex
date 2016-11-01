@@ -42,20 +42,7 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
     \end{figure}         
 
     Através do circuito então, quando um objeto se aproximar do sensor, a uma distância mínima que será especificada, um sinal será emitido para o controlador que irá acionará os motores para desviarem do obstáculo, para garantir a eficiência dessa solução serão utilizados no mínimo 5 sensores, 3 na parte inferior de forma a analisar a frente e as laterais do robô, um na parte superior para detectar a proximidade de obstáculos altos como mesas, e um abaixo do aspirador para indicar um possível desnivelamento a fim de evitar uma queda do mesmo.
-                               
-  \subsubsection{Demultiplexador}                        
-  \label{sub:demultiplexador}
-    Visto que a quantidade de pares IR presente no projeto é maior que 5 se faz necessário o uso de uma estratégia de alimentação para não sobrecarregar o microprocessador. Optou-se então por utilizar um demultiplexador possibilitando assim o chaveamento dos emissores de IR através do clock do microprocessador.
-
-    O componente escolhido para esse projeto foi o 4051, circuito integrado CMOS, consiste num Multiplexador/Demultiplexador de 8 canais que pode trabalhar tanto com sinais analógicos como digitais.\cite{newtoncbraga}
-
-  \begin{figure}[H]                                                           
-    \centering                                                                
-    \includegraphics[scale=0.2]{figuras/multiplexador.png}             
-    \caption{ CI CMOS 4051 multiplexador/demultiplexador de 8 canais.} 
-    \label{img:multiplexador}                                            
-  \end{figure}                                                                
-
+                                                                                               
   \subsubsection{Medidor de Bateria}
   \label{sub:Medidor_de_bateria}
     O aspirador de pó não pode ficar sem bateria no meio da execução da limpeza. Para conferir o nível de bateria, será utilizado um comparador de tensão. De forma que, assim que o medidor verificar que o nível da bateria está ficando muito reduzido, um sinal será enviado ao microprocessador que irá interromper o ciclo de limpeza e enviar o robô para a base de carregamento.
@@ -70,8 +57,8 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
 \label{sub:Hardwar_para_Comunicação}
   A parte de comunicação tem como objetivo coletar informações vindas dos sensores já apresentados, interpreta-las e envia-las para a base onde é feito o intefaceamento com o usuário através de um aplicativo para celular, para essa comunicação serão utilizados 2 microprocessadores, são eles:
 
-    \subsubsection{Arduíno}
-    Para controlar corretamente as informações obtidas por todos os sensores da parte de instrumentação do projeto é necessário um processador com uma grande quantidade de portas analógicas e digitais, sendo assim utilizaremos o Arduíno Mega, que possui as seguintes características:
+    \subsubsection{ATMega 2560}
+    Para controlar corretamente as informações obtidas por todos os sensores da parte de instrumentação do projeto é necessário um processador com uma grande quantidade de portas analógicas e digitais, sendo assim utilizaremos o ATMega 2560, que possui as seguintes características:
 
     \begin{figure}[H]                                                  
       \centering                                                       
@@ -97,7 +84,7 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
   
   \subsubsection{Módulo de WiFi}
   \label{sub:Modulo_de_wifi}
-    Para que o Arduíno possa enviar as informações coletadas para a base é necessário que o mesmo se conecte a rede sem fio, para isso utilizaremos o módulo WiFi ESP8266 ilustrado na figura abaixo.
+    Para que o Arduíno possa enviar as informações coletadas para a base é necessário que o mesmo se conecte a rede sem fio, para isso utilizaremos o módulo WiFi ESP8266, ilustrado na figura \ref{img:modulo_wifi}.
 
   \begin{figure}[H]                                      
     \centering                                           
@@ -128,29 +115,16 @@ A parte de instrumentação tem como principal objetivo solucionar o problema de
     \item Dimensões: 85 x 56 x 17 mm
  \end{itemize}                                                       
   
-  \textbf{Conectores:}
-  \begin{itemize}                                                     
-    \item 4 portas USB
-    \item GPIO de 40 pinos
-    \item Full HDMI
-    \item Ethernet 10/100 (RJ45)
-    \item Saída de vídeo via HDMI, Composite (PAL e NTSC) ou Raw LCD (DSI)
-    \item Saída de áudio via conector de 3,5mm
-    \item Camera interface (CSI)
-    \item Slot MicroSD
-    \item VideoCore IV 3D graphics core
-  \end{itemize}
-
   Com esse modelo, é possível realizar conexões com a internet e enviar informações ao usuário ou a um banco de dados, por exemplo.
 
 \subsection{Controle} % (fold)
 	\label{sub:controle}
 
-		\subsubsubsection{Sistema de Controle do R2-PI2}
+		\subsubsection{Sistema de Controle do R2-PI2}
 
 			A parte de controle tem como objetivo desenvolver um sistema capaz de monitorar e controlar a movimentação do aspirador para garantir que os motores sejam devidamente alimentados e juntamente com a parte de instrumentação e comunicação possa garantir a locomoção do robô durante a limpeza sem riscos de colisão com obstáculos.
 
-			O controlador por ora escolhido, Arduino, irá controlar o funcionamento dos motores carrinho e dos sensores. Abaixo encontra-se o diagrama de blocos para o sistema em malha fechada do controle do R2-P12.
+			O controlador por ora escolhido, ATMega 2560, irá controlar o funcionamento dos motores carrinho e dos sensores. A figura \ref{img:diagrama_sistema_controle} apresenta o diagrama de blocos para o sistema em malha fechada do controle do R2-P12.
 
 			\begin{figure}[H]
 				\centering
