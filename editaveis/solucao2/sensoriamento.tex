@@ -13,7 +13,122 @@
 		\subsubsection{Controle de distância}
 
 		\subsubsection{Monitoramento da bateria}
+		Com carga máxima, a bateria escolhida terá 12,6V e ela deixará de fornecer a corrente adequada ao circuito quando chegar a 8,25V (aproximadamente 66\% da bateria total). Para evitar que a bateria chegue a 8,25V no meio da execução da limpeza, um circuito comparador de tensão irá verificar continuamente qual a voltagem da bateria.
+
+		Além de enviar o sinal para o microcontrolador, será feita uma interface visual com 5 LEDs que vão indicar quando a bateria está com carga total e quando a bateria está perto da carga mínima (8,25V), conforme a figura [leds].
+
+		(inserir figura aqui)
+
+		A queda de tensão será apresentada em cinco LEDs que foram divididos em faixas muito próximas de tensão útil. Conforme os seguintes cálculos:
+
+		\begin{equation}
+		\label{eq:equação_medidor_bateria}
+			\frac{Tensão\ máxima - tensão\ mínima}{5}  
+		\end{equation}
+
+		Substituindo os valores em \ref{eq:equação_medidor_bateria}, temos:
+
+		\begin{equation}
+		\label{eq:equação_medidor_bateria_2}
+			\frac{100-66}{5} = 6,8  
+		\end{equation}
+
+		As faixas então foram definidas como:
+
+		\begin{itemize}
+			\item \textbf{Faixa 1}: 100\% - 93,2\%
+			\item \textbf{Faixa 2}: 93,2\% - 86,4\%
+			\item \textbf{Faixa 3}: 86,4\% - 79,6\%
+			\item \textbf{Faixa 4}: 79,6\% - 72,8\%
+			\item \textbf{Faixa 5}: 72,8\% - 66\%
+		\end{itemize}
 		
+		Considerando que o sistema de sucção consome cerca de seis vezes mais corrente do que o sistema de navegação do robô (4750mA - 836mA) e que são cinco faixas de tensão, estimou-se que um quinto da tensão útil é suficiente para o robô voltar para a base de carregamento com o sistema de sucção desligado. No entanto, sabendo que a curva de descarga de uma bateria não é linear, apenas após os testes empíricos será possível determinar com maior segurança se um ou dois quintos da tensão útil serão colocados à disposição do sistema de navegação para o robô poder retornar à base. 
+
+		Assim, enquanto a tensão da bateria estiver dentro das quatro faixas de tensão, o robô estará executando a rotina de limpeza e quando estiver na última faixa ele estará retornando para a base. 
+
+		As faixas de tensão foram projetadas a partir de um divisor de tensão com cinco saídas sendo que cada saída é o limite inferior da faixa.
+
+		(inserir figura divisor de tensão)
+
+		Fazendo o divisor de tensão com Ra e Rb, tem-se que:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão}
+			Vout= \frac{Rb\ *\ Vin}{Ra\ +\ Rb} 
+		\end{equation}
+
+		Sabendo que ${Vout = 0,66\ *\ Vin}$, substituimos \textit{Vout} na equação \ref{eq:divisor_de_tensão}:
+		
+		\begin{equation}
+		\label{eq:divisor_de_tensão_2}
+			0,66\ *\ Vin=\frac{Rb\ *\ Vin}{Ra\ +\ Rb} 
+		\end{equation}
+
+		Que resulta em:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_3}
+			0,66\ *\ Ra\ +\ 0,66\ *\ Rb\ =\ Rb
+		\end{equation}
+
+		Se Rb=10K$\Omega$, substituimos na equação \ref{eq:divisor_de_tensão_3} e obtemos:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_4}
+			Ra=\frac{10K\ -\ 0,66\ *\ 10K}{0,66} = 5K
+		\end{equation}
+
+		Como as faixas devem ter a aproximadamente a mesma variação de tensão, os resistores R3, R4, R5, R6 e R7 devem ter o mesmo valor e sua associação em série deve ser igual a 5K$\Omega$ (Ra), assim os valores das resistências do divisor de tensão devem ser:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_5}
+			R3\ =\ R4\ =\ R5\ =\ R6\ =\ R7\ =\ 1K
+		\end{equation}
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_6}
+			R8\ =\ 10K
+		\end{equation}
+
+		Para confirmar se o divisor proposto realmente cumpre os requisitos do projeto, foi realizada a simulação utilizando o software MultiSim do divisor aplicando uma tensão de 10V e o resultado obtido foi satisfatório.
+
+		(inserir figura da simulação)
+
+		Para verificar continuamente em qual das faixas a bateria está, optou-se por utilizar o CI TL084 que possui quatro amplificadores operacionais. Os amplificadores operacionais que operam sem realimentação comparam os sinais das entradas positiva ou não inversora (+) e negativa ou inversora (-). Caso o sinal da entrada não inversora seja maior do que o sinal da inversora, a saída do amplificador é nível lógico alto. Quando o sinal da entrada não inversora for menor do que o sinal da entrada inversora, o sinal é nível lógico baixo.
+
+		Assim, se for montado um circuito tendo a tensão da bateria nas entradas não inversoras (+), as saídas do divisor de tensão (tensões de referência) nas entradas inversoras (-) e LEDs nas saídas dos amplificadores, será possível ver por meio dos LEDs acesos ou apagados qual o nível de tensão da bateria.
+
+		Para o circuito acima funcionar bem, a tensão de entrada do divisor de tensão deverá ser igual a tensão máxima da bateria. Como a tensão máxima da bateria é de 12.6V, fica inviável geral um sinal constante de 12.6V apenas para servir como referência do divisor. Sabendo que o Arduino Mega gera um sinal de 5V, a tensão da bateria passará por um divisor de tensão  que será projetado para transformar os 12.6V em 5V de modo que seja possível utilizar os 5V do arduino no medidor de bateria.
+
+		Sabendo que a tensão de saída do novo resistor (Vout2) deve ser 5V e que a tensão de entrada (Vin2) é de 12.6V as resistências (Rc e Rd) utilizadas podem ser calculadas pela seguinte expressão:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_7}
+			Vout2\ =\frac{Rc\ *\ Vin2}{Rc\ +\ Rd}
+		\end{equation}
+
+		Substituindo os valores em \ref{eq:divisor_de_tensão_7}, temos:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_8}
+			5\ =\frac{Rc\ *\ 12.6}{Rc\ +\ Rd} => 7.6\ *\ Rc\ =\ 5\ *Rd
+		\end{equation}
+
+		Se Rc=1K$\Omega$, logo:
+
+		\begin{equation}
+		\label{eq:divisor_de_tensão_9}
+			Rd\ =\frac{7.6}{5} =~\ 1.5K
+		\end{equation}
+
+		Para verificar o divisor projeto se adequa às necessidades do projeto, foi feita a simulação no software MultiSim e o resultado encontrado foi satisfatório. A variação de 0,04V corresponde a 0,3\% da tensão máxima e, portanto, não prejudicará o sistema de medição da bateria.
+
+		(inserir figura da simulação)
+
+		O circuito completo do medidor de bateria é apresentado na figura.
+
+		(inserir figura)			
 	% subsection instrumentação (end)
 
 	\subsection{Controle} % (fold)
