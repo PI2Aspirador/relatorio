@@ -35,11 +35,21 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
   		O sensor de ultrassom escolhido para o robô R2-PI2 foi o HC-SR04 que envia um sinal sinal com duração de 10 microsegundos e envia 8 pulsos de 40KHz para aguardar o retorno do sinal pelo receptor. Esse sensor mede distâncias entre 2 centímetros e 4 metros, datasheet disponível em \cite{datasheet_ultrassom}. A escolha deste sensor foi motivada pela facilidade de acesso ao componente e pela faixa que ele mede. Para desviar com segurança dos obstáculos estima-se que ele deverá ser detectado a 10 centímetros de distância do robô permitindo que sejam executados movimentos que desviem do objeto com segurança.
 
-  		(inserir figura ultrassom aqui)
+  		\begin{figure}[H]                                                           
+      		\centering                                                                
+      		\includegraphics[scale=0.7]{figuras/Ultrassom_principio.png}               
+      		\caption{Modo de funcionamento do sensor de ultrassom.}    
+      		\label{img:funcionamento_utrassom}                                            
+    	\end{figure} 
 
     	Além de detectar os objetos que estão a frente do caminho percorrido pelo robô, é importante que seja possível saber qual o menor caminho de retorno do robô a base. Isso significa que muitas vezes o robô deverá saber em qual dos lados há um obstáculo mais longe (direito ou esquerdo). Para facilitar essa tomada de decisão, o robô terá, além do sensor frontal, dois sensores laterais (um no lado direito e outro no lado esquerdo). Adicionalmente, será instalado um sensor na parte traseira do robô que facilitará a entrada dele na base de recarregamento. O sistemas de navegação será explorado melhor posteriormente. 
 
-    	(inserir figura aqui modelo aqui)
+    	\begin{figure}[H]                                                           
+      		\centering                                                                
+      		\includegraphics[scale=0.5]{figuras/Sensores_robo.png}               
+      		\caption{Posicionamento dos sensores de ultrassom no robô.}    
+      		\label{img:posicionamento_sensores}                                            
+    	\end{figure} 
 
     	Portanto, o robô terá quatro sensores ultrassom instalados na sua estrutura evitando o choque com obstáculos e permitindo a navegação dele no cômodo que será limpado.
 
@@ -66,11 +76,29 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
   \subsubsection{Medidor de Bateria}
   \label{sub:Medidor_de_bateria}
-    O aspirador de pó não pode ficar sem bateria no meio da execução da limpeza. Para conferir o nível de bateria, será utilizado um comparador de tensão. De forma que, assim que o medidor verificar que o nível da bateria está ficando muito reduzido, um sinal será enviado ao microprocessador que irá interromper o ciclo de limpeza e enviar o robô para a base de carregamento.
+    Um dos requisitos específicos do projeto é o gerenciamento do status da bateria permitindo que o robô retorne à base antes da sua bateria descarregar.
 
-    Escolheu-se um circuito comparador que irá comparar a tensão da bateria com até 10 níveis de referência determinados de acordo com a tensão máxima da bateria e o mínimo aceitável para que o robô retorne à base. Essa comparação irá ocorrer por meio de amplificadores operacionais (Amp Op) que irão comparar a tensão que está vindo da bateria com aos níveis de referência. A saída do Amp Op será 1 se o sinal da bateria for maior do que a referência daquele amplificador ou será 0 se o sinal da bateria for menor do que a referência. Para tornar visível o nível da bateria, na saída de cada comparador será adicionado um LED.
+    Para fazer esse gerenciamento será utilizado um circuito comparador de tensões com amplificadores operacionais. Apesar dessa solução retornar o vível da bateria de maneira discreta, serão projetados cinco intervalos que permitam uma boa análise da bateria.
+
+    Para verificar em qual das faixas a bateria está, optou-se por utilizar o CI TL084 que possui quatro amplificadores operacionais. Os amplificadores operacionais que operam sem realimentação comparam os sinais das entradas positivas ou não inversora (+) e negativa ou inversora (-). Caso o sinal da entrada não inversora seja maior do que o sinal da inversora, a saída do amplificador é nivel lógico alto. Quando o sinal da entrada não inversora for menor do que o sinal da entrada inversora, o sinal é nível baixo.
+
+    Assim, se for montado um circuito tendo a tensão bateria nas entradas não inversoras (+), as saídas do divisor de tensão (tensão de referência) nas entradas inversoras (-) e LEDs nas saídas dos amplificadores, será possível ver por meio dos LEDs acesos ou apagados qual o nível de tensão da bateria
 
     Além de acender ou não os LEDs, cada saída do comparador vai enviar um sinal para o controlador informando o nível da bateria para que ele possa interromper o ciclo de limpeza e enviar o robô para base.
+
+    \subsubsection{Proteção dos componentes}
+    \label{sub:Proteção_dos_componentes}
+    Os optoacopladores são compostos por um LED e um fototransistor encapsulados em um CI, tem como uma das suas finalidades isolar eletricamente duas partes de um circuito e, por isso, podem ser utilizados para proteger uma porção do circuito. A parte do circuito responsável por controlar a outra irá acender o LED interno do optoacoplador e, assim que o fototransistor captar a luz, irá ativar o sinal de saída.
+
+    Foi escolhido o CI4N25 pelo baixo custo e por isolar atender os requisitos de proteção do circuito, pois isola bem o arduino (corrente máxima 500mA) do circuito do motor (corrente máxima 8800mA). A arquitetura interna do CI pode ser observada na figura \ref{img:optacoplador}.
+
+    \begin{figure}[H]                                                           
+      		\centering                    
+      		\includegraphics[scale=0.5]{figuras/optacoplador.png}               
+      		\caption{Arquitetura do CI 4N25.}    
+      		\label{img:optacoplador}                                            
+    	\end{figure}     
+
 
 % section instrumentação (end)
 
@@ -157,7 +185,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 			Como mostrado no diagrama, o controlador irá enviar sinais para os motores permitindo que eles sejam ligados ou desligados, fazendo o carrinho se movimentar de acordo com os parâmetros medidos pelos sensores infravermelhos (IR). 
 
-			Serão utilizados sensores IR configurados como detectores de proximidade, na parte frontal  e lateral do aspirador, evitando possíveis colisões com obstáculos em seu caminho, e embaixo dele para evitar vãos como escadas e impedir a queda do robô. Encoderes serão utilizados como controle de posição e também no auxílio da movimentação das rodas quando o aspirador girar para desviar de obstáculos. O monitoramento será contínuo, portanto sempre que houver algum obstáculo ao alcance dos sensores , o controlador enviará um sinal para os motores, impedindo que ocorra choques com objetos no caminho. 
+			Serão utilizados também sensores de ultrassom configurados como detectores de proximidade, na parte frontal, lateral e traseira do aspirador, evitando possíveis colisões com obstáculos em seu caminho, e embaixo dele os sensores IR serão utilizados para evitar vãos como escadas e impedir a queda do robô. Encoderes serão utilizados como controle de posição e também no auxílio da movimentação das rodas quando o aspirador girar para desviar de obstáculos. O monitoramento será contínuo, portanto sempre que houver algum obstáculo ao alcance dos sensores , o controlador enviará um sinal para os motores, impedindo que ocorra choques com objetos no caminho. 
 
 			Será monitorado também, o nível de bateria do robô, quando ele estiver abaixo de um limite que será estabelecido, o controlador enviará um sinal para que o robô possa então retornar para a base e carregar sua bateria. Os componentes envolvidos nessa área são apresentados a seguir.
 
