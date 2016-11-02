@@ -31,5 +31,17 @@
 	 	
 	 	O retorno à base deve levar em consideração o tempo disponível de bateria, ou seja, o caminho para base deve ser razoavelmente eficiente. Porém, a utilização da potência de sinal do \textit{wifi} gerou problemas relacionados a precisão destes dados. Por este motivo, o retorno a base também se encontra em estado de implementação. 
 
+	 	De acordo com o apresentado no plano de gerenciamento de risco, disposto no capítulo \ref{cha:riscos}, foi identificado um risco que afeta todo o planejamento incial para retorno a base. Este risco está ligado a precisão dos resultados obtidos com o uso da potência do sinal wifi para retorno a base. A partir de diversos testes, foi observado que a margem de erro deste sinal é muito elevada para utilização em um algoritmo de navegação. Desse modo, sua implementção foi deixada para a terceira etapa do projeto, onde serão utilizados outros meios, seja para calibrar o erro deste sinal, ou para substituir esta estratégia.
+
+	 	Durante esta etapa do trabalho, a estratégia para retorno a base envolve a utilização de um emissor na base, com um receptor no robô identificando a distância do emissor. Com esta informação, é possível navegar pelo ambiente realizando comparações de resultados para traçar uma direção até a base. De acordo com análises experimentais, é possível identificar a direção da base utilizando apenas 3 pontos distintos no ambiente. Estes pontos devem estar separados a uma distância inversamente proporcional a precisão deste sinal analisado.
+
+	 	Visualizando cada distância como um raio de uma circunferência, com 3 pontos obtidos pode-se analisar 3 circunferências que deverão possuir um ponto de intersecção, o qual deverá apontar para a base. Com o objetivo de simplificar a explicação, a Figura \ref{img:back} apresenta uma simulação da estratégia de retorno a base.
+
+	 	\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.18]{figuras/volta_a_base.png}
+			\caption{Estratégia para identificação da direção da base.}
+			\label{img:back}
+		\end{figure}
 	 % subsection de_volta_a_base_ (end)
 % section navegação (end)
