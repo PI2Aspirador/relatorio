@@ -1,0 +1,160 @@
+\section{Sucção} % (fold)
+\label{sec:sucção2}
+	Essa sessão visa documentar o método de construção do sistema de sucção do robô, descrevendo a construção dos protótipos e as decisões tomadas com base em testes realizados em cada protótipo. 
+
+	\subsection{Metodologia de construção}
+	\label{sub:metodologia_de_construção}
+		Para a execução do projeto proposto foram adquiridos três coolers comerciais de 14 cm com as especificações apresentadas na tabela \ref{tab:especificações_coolers}.
+
+		\begin{table}[H]
+			\centering
+			\caption{Dados do cooler}
+			\label{tab:especificações_coolers}
+			\begin{tabular}{ll}
+				Potencia                                              & 1.44 W               \\
+				Voltagem                                              & 12 V                 \\
+				Velocidade                                            & 1200+-10\% RPM       \\
+			\begin{tabular}[c]{@{}l@{}}Fluxo de ar\end{tabular} & 1.36 $m^3$/min (48 CFM)
+			\end{tabular}
+		\end{table}
+
+		O projeto baseava-se em apenas dois coolers, mas foram adquiridos três caso o resultado com dois não retornasse uma boa sucção. A montagem consiste em os cooler ligados lado a lado dentro de uma caixa hermeticamente fechada. Utilizando os três coolers, foram feitos os primeiros testes para medir a eficiência dessa montagem. Foi feito um furo de pequeno diâmetro na parte oposta à dos coolers, por onde deve entrar o ar.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_1.jpg}
+			\caption{Vista isométrica e superior da montagem, onde os buracos representam a posição dos coolers.}
+			\label{img:vista_isometrica_de_montagem}
+		\end{figure}
+
+		Os coolers foram ligados à voltagem de 12V com corrente de 1.5 A, mas o resultado não foi satisfatório, pois não houve nenhuma sucção mesmo alterando o diâmetro do buraco e sua posição. Foi suposto que o problema seriam os coolers, então foi planejada uma montagem com um deles para verificar seu funcionamento isolado.
+
+		Foi realizado um teste simples, utilizando um cooler menor de 5 cm para verificar o funcionamento do modelo de construção. A figura \ref{img:cooler_5cm} mostra o sistema construído.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_2.jpg}
+			\caption{Montagem com cooler de 5 cm.}
+			\label{img:cooler_5cm}
+		\end{figure}
+
+		O sistema foi ligado na fonte e este protótipo apresentou resultados positivos, apesar da sucção fraca por conta da voltagem e corrente do cooler serem baixos. O mesmo modelo foi construído em maior escala para utilizar o cooler maior. A figura \ref{img:cooler_14cm} mostra outro modelo construído.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_3.jpg}
+			\caption{Montagem com cooler de 14 cm.}
+			\label{img:cooler_14cm}
+		\end{figure}
+
+		Foi fornecido a tensão de 12V e corrente de 1.5 A ao sistema, mas apresentou-se uma eficiência muito baixa, com sucção quase imperceptível. Então, utilizando uma fonte de tensão, foi-se elevando a tensão até que ele indicasse uma melhora. Foi observado que enquanto a tensão era modificando, as hélices passavam a girar com maior velocidade passando a sugar com maior força. Ao fornecer o valor de tensão de 30 V, foi que o sistema alcançou um resultado que seria ótimo para o projeto. Mas seria inviável a fabricação do robô com uma bateria que fornecesse tal tensão. 
+
+		O último teste utilizando estes coolers, consistiu em aumentar a potência do sistema construindo-o com dois coolers utilizando o mesmo esquema de construção, visando uma alimentação de menor tensão para os motores. Foi reduzida a altura do sistema, a fim de reduzir perdas de carga, e adicionado um cooler em uma das paredes, ao final obteve o protótipo mostrado na figura \ref{img:coolers_14cm}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_4.jpg}
+			\caption{Protótipo com dois coolers de 14 cm.}
+			\label{img:coolers_14cm}
+		\end{figure}
+
+		Era esperado que com essa nova montagem, a eficiência fosse aumentada ao dobrar a potência do sistema, mas o resultado foi negativo, pois não apresentou mudanças com relação ao modelo com um cooler. Com os resultados obtidos com as montagens mostradas, o grupo chegou à conclusão de que os coolers não seriam utilizados, pois não mostraram resultados bons que fossem viáveis ao projeto. Os motores elétricos dos coolers possuíam uma potência incompatível com o tipo e o tamanho da hélice do mesmo, gerando um fluxo de massa baixo, menor que o indicado pelos fabricantes. 
+
+		Diante dos problemas, foram feitas pesquisas a respeito de novos modelos de construção que fossem eficientes, apresentando uma sucção forte, dentro dos limites de tensão possíveis no projeto. As hélices são um tipo de “ventilador axial”, que força o ar a passar por elas, gerando um fluxo de ar segue transversal à direção do cooler. Existe também outro tipo de ventilador, conhecido como “ventilador centrífugo”, onde suas hélices são dispostas de forma diferente, como mostra a figura \ref{img:ventilador_centrífugo}.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_5.jpg}
+			\caption{Hélices do ventilador centrífugo.}
+			\label{img:ventilador_centrífugo}
+		\end{figure}
+
+		O “ventilador centrífugo” acelera o ar radialmente, fazendo com que a energia cinética da rotação das hélices aumente a pressão do ar, resultando em um fluxo de alta velocidade na saída. Foi escolhida essa hélice para a construção de novos protótipos.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_6.jpg}
+			\caption{Fluxo de ar em um ventilador de ar centrífugo.\href{https://www.republic-mfg.com/blowers/republic-centrifugal-blower.asp}{Republic Manufacturing}}
+			\label{img:ventilador_centrífugo}
+		\end{figure}
+
+		Para evitar o problema de falta de potência, foi escolhido um motor com maior potência e rotação nominal se comparado ao motor do cooler. Foi escolhido um motor DC 12V com as especificações apresentadas na tabela \ref{tab:motor_12V}.
+
+		\begin{table}[H]
+			\centering
+			\caption{Dados do motor DC 12 Volts.}
+			\label{tab:motor_12V}
+			\begin{tabular}{ll}
+				Potencia   & 40.55W          \\
+				Voltagem   & 13.5 V          \\
+				Velocidade & 28086+-10\% RPM \\
+				Torque     & 55.19 mN.m     
+			\end{tabular}
+		\end{table}
+
+		As hélices foram construídas em alumínio e grudadas em uma pequena base com furo para encaixar o eixo do motor (\ref{img:hélices_alumínio}).
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_7.jpg}
+			\caption{Hélices construídas em alumínio.}
+			\label{img:hélices_alumínio}
+		\end{figure}
+
+		Utilizando CD’s, papelão, plástico em formato cilíndrico a estrutura final desse protótipo é mostrada na figura \ref{img:protótipo_CD}.  
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_8.jpg}
+			\caption{Vistas do protótipo feito com CD’s.}
+			\label{img:protótipo_CD}
+		\end{figure}
+
+		Foi realizado o teste com o novo protótipo, mas por defeitos de fabricação, as hélices durante a rotação colidiam com a estrutura, assim o ar era soprado com menor velocidade, consequentemente sugava um fluxo baixo de ar. 
+
+		Foi feita outro protótipo utilizando o mesmo modelo de hélice construída utilizando CD’s seguindo o mesmo modelo de estrutura, mas novamente, as hélices não giravam livremente, pois colidiam com as outras partes da estrutura. Graças à essas assimetrias e defeitos de fabricação foi observado uma grande vibração do sistema. Diante da dificuldade de construir uma estrutura sem defeitos e visando reduzir as vibrações, para que ela não danifique a estrutura do robô e aumentar a eficiência do ventilador foi adotada a solução de adquirir a hélice comercial, garantindo uma construção sem defeitos. O motor para movimentar a hélice é de 12V, potência de 52.8 W, corrente de 4.4 A.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_9.jpg}
+			\caption{Motor de 52.8W instalado na estrutura de aspiração.}
+			\label{img:estrutura_motor_52.8W}
+		\end{figure}
+
+		Foi realizada a montagem do protótipo utilizando a nova hélice. Foram utilizados dois compartimentos de plásticos, em um foi acoplado o conjunto hélice motor, e nas laterais foram feitos furos para a saída de ar. Foi colocada uma divisão entre os dois compartimentos com um filtro para a sujeira. Foi feito um furo no segundo compartimento para encaixar a mangueira a qual irá ser a ponta da sucção. Conectou-se as partes e foram feitos os testes ligando-a fonte de 12V e 4.4 A. O resultado foi positivo apresentando uma sucção forte, sugando toda a sujeira que foi disponibilizada para o teste.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_10.jpg}
+			\caption{Sistema de sucção com o compartimento de sujeira.}
+			\label{img:sistema_com_compartimento}
+		\end{figure}
+
+		Para aumentar a eficiência de limpeza, foi adicionado ao sistema de sucção uma vassoura mágica. A fricção dela com o solo faz com que a sujeira seja carregada para seu compartimento interno, mas para garantir uma boa limpeza ela deve passar pelo mesmo local várias vezes. Como o robô irá percorrer a trajetória em linha reta com velocidade constante sem realizar muitas passagens pelo mesmo local, foi acoplado um motor DC de 6V e 0.1 A no eixo da vassoura para garantir um aumento na eficiência na coleta da sujeira. Ao realizar o teste, observou-se que por conta da grande velocidade de rotação do motor, as partículas de sujeiras eram lançadas para longe, ao invés de serem carregadas para seu interior. Foi colocado um tecido com pelos atrás da vassoura, limitando o movimento de partículas naquela direção, garantindo que elas fossem depositadas no interior da vassoura mágica.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_11.jpg}
+			\caption{Escova mágica conectada ao motor DC de 6V.}
+			\label{img:escova_com_motor}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_12.jpg}
+			\caption{Parte inferior da escova mágica com o tecido de contenção das partículas.}
+			\label{img:escova_com_tecido}
+		\end{figure}
+
+		Com os dois subsistemas de limpeza prontos e funcionando, foi feita a conexão entre eles por uma mangueira sanfonada, para que ela sugue as partículas de sujeiras que a vassoura colhe. Foi feito um furo na parte superior da estrutura da vassoura da forma da ponta de mangueira, que foi achatada para aumentar o comprimento de aspiração da sujeira que fica interna a vassoura mágica. O resultado do protótipo é mostrado na figura abaixo.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/asppc2_13.jpg}
+			\caption{Subsistema de sucção completo.}
+			\label{img:sistema_completo}
+		\end{figure}
+
+		Foi realizado o teste das duas peças integradas, simulou-se o movimento do robô passando-o apenas uma vez por cima da sujeira. O resultado foi positivo, o sistema foi capaz de colher cerca de 80\% das partículas que foram colocadas para teste.
+	% subsection metodologia de construção (end)
+% section sucção (end)
