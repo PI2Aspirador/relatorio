@@ -256,27 +256,27 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 					Deve-se observar a frequência de trabalho, para não ultrapassar os limites do hardware de potência em casos onde há carga indutivas, como motores, é necessário pulsar uma frequência que faça a corrente estável para uma mesma largura de pulso, suavizando assim o movimento do motor.
 
-				\item \textbf{Encoder}:
+				%\item \textbf{Encoder}:
+%
+%					Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
 
-					Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
+%					\begin{figure}[H]
+%						\centering
+%						\includegraphics[scale=0.6]{figuras/encoder.png}
+%						\caption{Sistema de funcionamento de um encoder absoluto.}
+%						\label{img:encoder}
+%					\end{figure}
 
-					\begin{figure}[H]
-						\centering
-						\includegraphics[scale=0.6]{figuras/encoder.png}
-						\caption{Sistema de funcionamento de um encoder absoluto.}
-						\label{img:encoder}
-					\end{figure}
+%					A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
 
-					A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders [3]. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
+%					Para esse projeto escolheu-se o módulo encoder P17, mostrado na figura \ref{img:modulo_encoder}, que realiza a leitura do sentido do giro e pode ser integrado ao Arduíno.
 
-					Para esse projeto escolheu-se o módulo encoder P17, mostrado na figura \ref{img:modulo_encoder}, que realiza a leitura do sentido do giro e pode ser integrado ao Arduíno.
-
-					\begin{figure}[H]
-						\centering
-						\includegraphics[scale=0.6]{figuras/modulo_encoder.png}
-						\caption{Módulo encoder.}
-						\label{img:modulo_encoder}
-					\end{figure}
+%					\begin{figure}[H]
+%						\centering
+%						\includegraphics[scale=0.6]{figuras/modulo_encoder.png}
+%						\caption{Módulo encoder.}
+%						\label{img:modulo_encoder}
+%					\end{figure}
 
 			\end{enumerate}
 

@@ -1,20 +1,24 @@
 \section{Sensoriamento} % (fold)
 \label{sec:sensoriamento2}
 
-	Inserir texto introdutorio...
+	Após definir as especificações dos componentes na sessão \ref{sec:sensoriamento}, será descrito a seguir de forma detalhada as estratégias seguidas pelo grupo para atender aos requisitos do projeto. Tambem serão apresentadas as simulações realizadas para validar os conceitos aplicados, resultados práticos serão apresentados em um momento posterior.
 
 	A parte do projeto de eletrônica responsável pela comunicação será apresentada na sessão \ref{sub:hardware}.
 
 	\subsection{Instrumentação} % (fold)
 	\label{sub:instrumentação2}
-
-		Apresentar aqui os detalhes de do projeto de instrumentação.
+		A instrumentação foi dividida em três subgrupos, cada um com um foco especifico para garantir a integridade do robô \textit{R2-PI2}, esses subgrupos são apresentados a seguir.
 
 		\subsubsection{Controle de distância}
 		\label{sub:Controle_de_distância}
-		A estratégia de controle utilizada na locomoção do R2-PI2, analisa as seguintes situações, o robô se locomoverá sempre para a frente enquanto não encontrar obstáculos em seu caminho. Na detecção de um objeto, os sensores posicionados a direta e a esquerda do robô farão a medição de distância. O aspirador tomará a decisão de desviar para o lado contrário da menor distância medida ou na ausência da mesma. Na possibilidade de ausência de distância ou impossibilidade de cálculos, o desvio será feito a direita por padrão. A figura a seguir mostra o fluxograma do algoritmo utilizado na locomoção do aspirador.
+		A estratégia de controle utilizada na locomoção do R2-PI2, analisa as seguintes situações, o robô se locomoverá sempre para a frente enquanto não encontrar obstáculos em seu caminho. Na detecção de um objeto, os sensores posicionados a direta e a esquerda do robô farão a medição de distância. O aspirador tomará a decisão de desviar para o lado contrário da menor distância medida ou na ausência da mesma. Na possibilidade de ausência de distância ou impossibilidade de cálculos, o desvio será feito a direita por padrão. A figura \ref{img:circuito_de_controle_dos_motores} mostra o fluxograma do algoritmo utilizado na locomoção do aspirador.
 
-		(inserir figura aqui)
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{figuras/fluxograma_eletronica.png}
+			\caption{Fluxograma do algoritmo de locomoção do R2-PI2, realizado pela equipe de eletrônica para testes iniciais.}
+			\label{img:circuito_de_controle_dos_motores}
+		\end{figure}
 
 		No caso da identificação de degraus ou desníveis o algoritmo consiste na simples análise de obstáculos ou não. Por limitação do sensor IR, a distância máxima medida é de 2.5 cm, então enquanto uma distância escolhida como aproximadamente 1cm estiver sendo medida, o que significa que o robô está em contato com o chão, ele continuará se movimentando normalmente, quando essa distância medida for maior que 1 cm, o aspirador irá parar, dar uma ré e escolher a melhor rota para continuar seguindo.
 
@@ -50,11 +54,11 @@
 		As faixas então foram definidas como:
 
 		\begin{itemize}
-			\item \textbf{Faixa 1}: 100\% - 93,2\%
-			\item \textbf{Faixa 2}: 93,2\% - 86,4\%
-			\item \textbf{Faixa 3}: 86,4\% - 79,6\%
-			\item \textbf{Faixa 4}: 79,6\% - 72,8\%
-			\item \textbf{Faixa 5}: 72,8\% - 66\%
+			\item \textbf{Faixa 1}: 100\% $\sim$ 93,2\%
+			\item \textbf{Faixa 2}: 93,2\% $\sim$ 86,4\%
+			\item \textbf{Faixa 3}: 86,4\% $\sim$ 79,6\%
+			\item \textbf{Faixa 4}: 79,6\% $\sim$ 72,8\%
+			\item \textbf{Faixa 5}: 72,8\% $\sim$ 66\%
 		\end{itemize}
 		
 		Considerando que o sistema de sucção consome cerca de seis vezes mais corrente do que o sistema de navegação do robô (4750mA - 836mA) e que são cinco faixas de tensão, estimou-se que um quinto da tensão útil é suficiente para o robô voltar para a base de carregamento com o sistema de sucção desligado. No entanto, sabendo que a curva de descarga de uma bateria não é linear, apenas após os testes empíricos será possível determinar com maior segurança se um ou dois quintos da tensão útil serão colocados à disposição do sistema de navegação para o robô poder retornar à base. 
@@ -95,7 +99,7 @@
 
 		\begin{equation}
 		\label{eq:divisor_de_tensão_4}
-			Ra=\frac{10K - 0,66 * 10K}{0,66} = 5K
+			Ra=\frac{10K - 0,66 * 10K}{0,66} \simeq 5K
 		\end{equation}
 
 		Como as faixas devem ter a aproximadamente a mesma variação de tensão, os resistores R3, R4, R5, R6 e R7 devem ter o mesmo valor e sua associação em série deve ser igual a 5K$\Omega$ (Ra), assim os valores das resistências do divisor de tensão devem ser:
@@ -121,7 +125,7 @@
 		\end{figure}
 
 
-		Para o circuito acima funcionar bem, a tensão de entrada do divisor de tensão deverá ser igual a tensão máxima da bateria. Como a tensão máxima da bateria é de 12.6V, fica inviável geral um sinal constante de 12.6V apenas para servir como referência do divisor. Sabendo que o Arduino Mega gera um sinal de 5V, a tensão da bateria passará por um divisor de tensão  que será projetado para transformar os 12.6V em 5V de modo que seja possível utilizar os 5V do arduino no medidor de bateria.
+		Para o circuito acima funcionar bem, a tensão de entrada do divisor de tensão deverá ser igual a tensão máxima da bateria. Como a tensão máxima da bateria é de 12.6V, fica inviável geral um sinal constante de 12.6V apenas para servir como referência do divisor. Sabendo que o ATMega gera um sinal de 5V, a tensão da bateria passará por um divisor de tensão  que será projetado para transformar os 12.6V em 5V de modo que seja possível utilizar os 5V do ATMega no medidor de bateria.
 
 		Sabendo que a tensão de saída do novo resistor (Vout2) deve ser 5V e que a tensão de entrada (Vin2) é de 12.6V as resistências (Rc e Rd) utilizadas podem ser calculadas pela seguinte expressão:
 
@@ -141,7 +145,7 @@
 
 		\begin{equation}
 		\label{eq:divisor_de_tensão_9}
-			Rd =\frac{7.6}{5}\ =~\ 1.5K
+			Rd =\frac{7.6}{5} \simeq 1.5K
 		\end{equation}
 
 		Para verificar o divisor projeto se adequa às necessidades do projeto, foi feita a simulação no software MultiSim e o resultado encontrado foi satisfatório. A variação de 0,04V corresponde a 0,3\% da tensão máxima e, portanto, não prejudicará o sistema de medição da bateria.
@@ -164,7 +168,7 @@
 
 		\subsubsection{Proteção dos componentes}
 		\label{sub:Proteção_dos_componentes_2}
-		A porta lógica do Arduíno Mega envia até 40mA de corrente a 5V, para limitar a corrente que irá acionar o LED interno do acoplador óptico utilizaremos uma resistencia de 220$\Omega$. O outro lado do optoacoplador  terá uma resistor pull-up de 10K$\Omega$ para garantir que quando o fototransistor capte a luz, a corrente flua para o terra e ligue o motor do sistema de sucção.
+		A porta lógica do ATMega envia até 40mA de corrente a 5V, para limitar a corrente que irá acionar o LED interno do acoplador óptico utilizaremos uma resistencia de 220$\Omega$. O outro lado do optoacoplador  terá uma resistor pull-up de 10K$\Omega$ para garantir que quando o fototransistor capte a luz, a corrente flua para o terra e ligue o motor do sistema de sucção.
 
 		\begin{figure}[H]
 			\centering
@@ -181,23 +185,38 @@
 
 		Pode-se observar também no esquemático, o sensor TCRT5000 que foi posicionado na frente da roda boba afim de identificar algum degrau ou desnível que possa impedir o movimento do aspirador ou danificá-lo.
 
-		(inserir figura aqui)
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.7]{figuras/locomocao1.png}
+			\caption{Circuito de locomoção do aspirador.}
+			\label{img:circuito_de_locmoção}
+		\end{figure}
 
 		Na montagem do circuito utilizou-se entradas analógicas, digitais e PWM. A legenda da figura identifica a natureza dos sinais utilizados de acordo com a pinagem do controlador.
 
 		Os motores são controlados pela ponte H (L298N) que está conectada ao controlador por meio de entradas PWM. A ponte H permite a rotação dos motores nos dois sentidos e o controle de velocidade do mesmo. Sendo assim o aspirador pode se movimentar em todas as direções desviando-se de obstáculos e em uma velocidade adequada para que o sistema de sucção funcione de forma eficiente.
 
-		Durante os testes de locomoção em conjunto com os sensores de obstáculos, observou-se que os sensores ultrassônicos e IR estavam variando muito , atrapalhando assim o movimento do aspirador. Após pesquisas concluiu-se que os motores estavam gerando ruído nos sensores e uma solução encontrada foi utilizar três capacitores cerâmicos de 100nF, um entre as escovas e os outros dois, cada um entre uma escova e a carcaça do motor. O esquema realizado para os dois motores se encontra na figura abaixo.
+		Durante os testes de locomoção em conjunto com os sensores de obstáculos, observou-se que os sensores ultrassônicos e IR estavam variando muito , atrapalhando assim o movimento do aspirador. Após pesquisas concluiu-se que os motores estavam gerando ruído nos sensores e uma solução encontrada foi utilizar três capacitores cerâmicos de 100nF, um entre as escovas e os outros dois, cada um entre uma escova e a carcaça do motor. O esquema realizado para os dois motores se encontra na figura \ref{img:esquema_de_redução_de_ruido}.
 
-		(inserir figura aqui)
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{figuras/motorcap.png}
+			\caption{Esquema de redução de ruído do motor.}
+			\label{img:esquema_de_redução_de_ruido}
+		\end{figure}
 
-		O controlador ATMega 2560 controla também o sistema de sucção do aspirador que conta com dois motores. Esse controle foi implementado por meio do chaveamento de transistores. O esquemático abaixo mostra o circuito de controle genérico dos motores do sistema.
+		O controlador ATMega 2560 controla também o sistema de sucção do aspirador que conta com dois motores. Esse controle foi implementado por meio do chaveamento de transistores. O esquemático apresentado na figura \ref{img:circuito_de_controle_dos_motores} mostra o circuito de controle genérico dos motores do sistema.
 
-		(inserir figura aqui)
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.7]{figuras/chave.png}
+			\caption{Circuito de controle dos motores.}
+			\label{img:circuito_de_controle_dos_motores}
+		\end{figure}
 
 		O circuito é ativado por uma saída pwm do controlador que polariza o gate do transistor permitindo que ele conduza corrente através do motor. Por operar com uma corrente alta, utilizou-se um transistor de potência NMOS IRF840 que suporta uma corrente máxima de 8A e 500 V de tensão.
 
-		O motor que ativa o sistema de sucção drena uma corrente muito alta, cerca de 4,4A. Caso haja uma corrente de fuga dos motores para o Arduino, o microcontrolador irá queimar instantaneamente, pois ele suporta até 500mA. Para garantir que essa situação não aconteça, será utilizado um circuito de proteção com optoacopladores, descrito na sessão \ref{sub:Proteção_dos_componentes_2}, que irá isolar eletricamente o arduino do motor.
+		O motor que ativa o sistema de sucção drena uma corrente muito alta, cerca de 4,4A. Caso haja uma corrente de fuga dos motores para o ATmega, o microcontrolador irá queimar instantaneamente, pois ele suporta até 500mA. Para garantir que essa situação não aconteça, será utilizado um circuito de proteção com optoacopladores, descrito na sessão \ref{sub:Proteção_dos_componentes_2}, que irá isola-lo eletricamente do motor.
 
 	% subsection controle (end)
 % section sensoriamento (end)
