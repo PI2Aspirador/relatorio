@@ -1,0 +1,25 @@
+\section{Interface} % fold
+\label{sub:interface}
+  Para a realização da interface com o usuário, foi criado uma aplicação web, utilizando o \textit{framework} livre, Ruby on Rails\cite{rails}.
+Esse \textit{framework} permite desenvolvimento de sites e usa como linguagem o Ruby. Sua arquitetura padrão é o MVC(\textit{Model-View-Controller}),
+ que basicamente separa a aplicação em 3 camadas. A camada de interação do usuário(\textit{view}), a camada de manipulação dos dados(\textit{model}) 
+e a camada de controle(\textit{controller})\cite{mvc}.
+  O rails permite adicionar bibliotecas com funções especias, essas bibliotecas tem o nome de \textit{gem}. Para nossa aplicação, além das gems já padrões para a utilização
+  do rails, também utilizamos as gems que podem ser vistas na tabela \ref{gems}.
+\begin{table}[H]
+\centering
+\caption{Gems}
+\label{gems}
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+{\color[HTML]{333333} \textbf{Gem}} & {\color[HTML]{333333} \textbf{Descrição}} \\ \hline
+devise\_ldap\_authenticatable       & Para autenticar junto com uma base LDAP   \\ \hline
+cancancan                           & Para autorização                          \\ \hline
+rolify                              & Para criar funções de usuários            \\ \hline
+fullcalendar-rails                  & Para mostrar calendário de agendamento    \\ \hline
+momentjs-rails                      & Auxílio ao calendário                     \\ \hline
+bootstrap-sass                      & Para layout das páginas                   \\ \hline
+rails-erd                           & Para gerar diagrama de classe             \\ \hline
+\end{tabular}
+\end{table}
