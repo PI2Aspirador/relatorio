@@ -104,7 +104,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 \subsection{Hardware para Comunicação}
 \label{sub:Hardwar_para_Comunicação}
-  A parte de comunicação tem como objetivo coletar informações vindas dos sensores já apresentados, interpreta-las e envia-las para a base onde é feito o intefaceamento com o usuário através de um aplicativo para celular, para essa comunicação serão utilizados 2 microprocessadores, são eles:
+  A parte de comunicação tem como objetivo coletar informações vindas dos sensores já apresentados, interpreta-las e envia-las para a base onde é feito o intefaceamento com o usuário através de um aplicativo para celular. Para essa comunicação serão utilizados 2 microprocessadores, são eles:
 
     \subsubsection{ATMega 2560}
     Para controlar corretamente as informações obtidas por todos os sensores da parte de instrumentação do projeto é necessário um processador com uma grande quantidade de portas analógicas e digitais, sendo assim utilizaremos o ATMega 2560, que possui as seguintes características:
@@ -134,7 +134,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
   
   \subsubsection{Módulo de WiFi}
   \label{sub:Modulo_de_wifi}
-    Para que o Arduíno possa enviar as informações coletadas para a base é necessário que o mesmo se conecte a rede sem fio, para isso utilizaremos o módulo WiFi ESP8266, ilustrado na figura \ref{img:modulo_wifi}.
+    Para que o Arduíno possa enviar as informações coletadas para a base é necessário que o mesmo se conecte à rede sem fio, para isso utilizaremos o módulo WiFi ESP8266, ilustrado na figura \ref{img:modulo_wifi}.
 
   \begin{figure}[H]                                      
     \centering                                           
@@ -165,7 +165,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
     \item Dimensões: 85 x 56 x 17 mm
  \end{itemize}                                                       
   
-  Com esse modelo, é possível realizar conexões com a internet e enviar informações ao usuário ou a um banco de dados, por exemplo.
+  Com este modelo, é possível realizar conexões com a internet e enviar informações ao usuário ou a um banco de dados, por exemplo.
 
 \subsection{Controle} % (fold)
 	\label{sub:controle}
@@ -192,7 +192,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 			\begin{enumerate}
 				\item \textbf{Ponte H}:
 
-					Para que se possa controlar a direção e a velocidade dos motores , é necessário que a corrente elétrica possa fluir nas duas direções dentro de sua bobina, gerando campos magnéticos com intensidade e sentidos opostos. A configuração mais utilizada para controlar a corrente nesse projeto é um driver em ponte H (INOUE e OSUKA, 2004).
+					Para que se possa controlar a direção e a velocidade dos motores , é necessário que a corrente elétrica possa fluir nas duas direções dentro de sua bobina com intuito de gerar campos magnéticos com intensidade e sentidos opostos. A configuração mais utilizada para controlar a corrente nesse projeto é um driver em ponte H (INOUE e OSUKA, 2004).
 
 					O circuito da Ponte H é constituído por quatro transistores que atuam como chave e que, dependendo da configuração do chaveamento, determinam o sentido de rotação dos motores, como pode ser observado na Figura \ref{img:configH}.
 
@@ -222,7 +222,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 					\begin{equation}\label{3}
 						V_{0} = \frac{Ton.vi}{T}
 					\end{equation}
-					Onde  é a tensão média de saída,  é o período em segundos em que o sinal fica em nível alto, T o período total do sinal e Vi a tensão de nível alto.
+					Onde V0 é a tensão média de saída, Ton é o período em segundos em que o sinal fica em nível alto, T o período total do sinal e Vi a tensão de nível alto.
 
 					A potência de saída do sinal pode ser descrita como:
 
@@ -230,7 +230,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 					P = V_{0} . I_{0}
 					\end{equation}
 
-					Sendo P a potência de saída,  a tensão de saída e  a corrente de saída. Portanto a partir das equações anteriores pode-se afirmar que:
+					Sendo P a potência de saída, V0 a tensão de saída e I0 a corrente de saída. Portanto a partir das equações anteriores pode-se afirmar que:
 
 					\begin{equation}
 					V_{0} = Vi . d
@@ -246,15 +246,15 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 					I_{0} = \frac{d . Vi}{R}
 					\end{equation}
 
-					E a potência de saída é dada por:
+					E P0 a potência de saída é dada por:
 
 					\begin{equation}
 					P_{0} = \frac{(D . Vi)^{2}}{R}
 					\end{equation}
 
-					Considerando-se uma carga totalmente resistiva, pode-se controlar a potência entregue de maneira proporcional a largura de pulso ao quadrado.
+					Considerando uma carga totalmente resistiva, é possível controlar a potência entregue de maneira proporcional à largura de pulso ao quadrado.
 
-					Deve-se observar a frequência de trabalho, para não ultrapassar os limites do hardware de potência em casos onde há carga indutivas, como motores, é necessário pulsar uma frequência que faça a corrente estável para uma mesma largura de pulso, suavizando assim o movimento do motor.
+					Para a frequência de trabalho nao ultrapassar os limites de hardware de potência na presença de cargas indutivas, como motores, é necessário pulsar um frequência que faça corrente estável para uma mesma largura de pulso, suavizando o movimento do motor.
 
 				%\item \textbf{Encoder}:
 %

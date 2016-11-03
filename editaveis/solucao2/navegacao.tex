@@ -23,7 +23,7 @@
 
 	 	Esta navegação aletarória ocorre até que seja determinado o recuo à base, seja por falta de bateria ou por entrada \textit{stop} por parte do usuário.
 
-	 	A utilização de \textit{encoders} é necessária para minimizar a margem de erro na angulação de curvas e distâncias percorridas. Porém, sua utilização está suspensa durante esta segunda fase do projeto, sendo implementado apenas na terceira etapa, fase de integração dos sub-sistemas.
+	 	A utilização de \textit{encoders} é necessária para minimizar a margem de erro na angulação de curvas e distâncias percorridas. Porém, sua utilização está suspensa durante esta segunda fase do projeto, sendo implementado apenas na terceira etapa, fase de integração dos subsistemas.
 	 % subsection running (end) 
 
 	 \subsection{De volta à base (Back)} % (fold)
@@ -42,6 +42,15 @@
 			\includegraphics[scale=0.18]{figuras/volta_a_base.png}
 			\caption{Estratégia para identificação da direção da base.}
 			\label{img:back}
-		\end{figure}
+		\end{figure} 
+
+		É importante ressaltar que para que a estratégia funcione, os 3 pontos não podem ser colineares, pois se forem o resultado das leituras pode acabar gerando dois pontos possíveis de intersecção, como mostrados no exemplo da figura \ref{img:back2}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1]{figuras/volta_a_base_colinear.png}
+			\caption{Estratégia para identificação da direção da base com pontos colineares.}
+			\label{img:back2}
+		\end{figure} 
 	 % subsection de_volta_a_base_ (end)
 % section navegação (end)
