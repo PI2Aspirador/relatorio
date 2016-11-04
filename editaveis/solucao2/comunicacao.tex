@@ -5,8 +5,38 @@
 
 	\subsection{Hardware} % (fold)
 	\label{sub:hardware}
-		
-		Apresentar aqui os detalhes de hardware utilizados para comunicação.
+		Um dos requisitos mais críticos do projeto é o da comunicação entre a base e o robô, pois todas as informações colatadas pelo robô são enviadas para a base realizar o processamento, já que a base possui um poder de processamento muito superior ao do próprio robô.
+
+		A implementação do sistema com os \textit{hardwares} especificados na sessão \ref{sub:Hardwar_para_Comunicação} é apresentada na figura \ref{img:hardware_comunicação}.(REFAZER A FIGURA!)
+
+		\begin{figure}[H]                                                           
+      		\centering                    
+      		\includegraphics[scale=0.5]{figuras/Hardware_Comunicacao.jpg}               
+      		\caption{Esquemático do hardware implementado para realizar a comunicação entre os microprocessadores.}    
+      		\label{img:hardware_comunicação}                                            
+    	\end{figure}
+
+    	O sistema projetado para a base consiste em um modem roteador conectado a \textit{raspberry pi}, essa conexão é feita por meio de um cabo \textit{ethernet} e dessa forma o sistema é capaz de gerar uma subrede que deve ser acessada pelo robô e pelo usuário quando necessário. A seta vermelha na figura \ref{img:hardware_comunicação} representa essa comunicação entre o robô e a base que é feita via \textit{WiFi} utilizando o protocolo TCP/IP.
+
+    	Para o robô foi necessário realizar alguns ajustes no projeto inicial que não contemplava o CI CD4050, ao consultar o datasheet do módulo ESP8266 foi constatado que o mesmo trabalha com tensões máximas de ate 3.3V e o controlador utilizado no robô gera sinais com ate 5V, a solução encontrada para resolver esse problema foi utilizar o CI CD4050, que consiste em um buffer não inversor que foi utilizado nesse contexto para converter o nível lógico alto de 5V para 3.3V, a figura \ref{img:datasheet_cd4050} mostra o esquemático interno do CI.
+
+    	\begin{figure}[H]                                                           
+      		\centering                    
+      		\includegraphics[scale=0.4]{figuras/cd4050.png}               
+      		\caption{Esquemático interno do CD4050.(\href{http://www.embarcados.com.br/esp8266-com-arduino/}{Embarcados}})    
+      		\label{img:datasheet_cd4050}                                            
+    	\end{figure}
+
+    	Por falha de observação, durante a primeira tentativa de montagem desse sistema, acidentalmente foi inserido no RX do módulo uma tensão de 5V, como mencionado anteriormente o módulo trabalha com tensões máximas de 3.3V o que resultou na queima do RX do componente impossibilitando a comunicação seraial entre o módulo e o microprocessador, como solução foi adquirido outro módulo igual para continuar o processo de montagem, porem o módulo comprado apresentou falhas na sua inicialização de forma que não foi possível configura-lo da forma desejada, então como última solução foi adquirido um kit de desenvolvimento que garante a correta alimentação exigida pelo ESP8266 facilitando a utilização do mesmo, este foi devidamente configurado de acordo com o projeto e posteriormente será incorporado ao protótipo do projeto, a figura \ref{img:kit_desenvolvimento} apresenta o kit adquirido.
+
+    	\begin{figure}[H]                                                           
+      		\centering                    
+      		\includegraphics[scale=0.5]{figuras/kit_desenvolvimento.jpg}               
+      		\caption{Kit de desenvolvimento ESP8266 \textit{WiFi} 802.11 B/g/n.(\href{http://www.afeletronica.com.br/pd-31421a-esp8266-wifi-802-11-b-g-n-kit-desenvolvimento.html}{AF Eletrônica}})    
+      		\label{img:kit_desenvolvimento}                                            
+    	\end{figure}
+
+    	Este kit necessita de uma alimentação de 9V/1A, sua alimentação será realizada pela bateria do robô e somente os pinos correspondente ao RX e ao TX serão utilizados pelo microprocessador para realizar a comunicação serial. Essa comunicação serial é representada na figura \ref{img:hardware_comunicação} pelas setas verdes.
 	% subsection hardware (end)
 
 	\subsection{Software} % (fold)
