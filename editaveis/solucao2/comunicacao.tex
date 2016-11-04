@@ -1,7 +1,7 @@
 \section{Comunicação} % (fold)
 \label{sec:comunicação2}
 
-	Com o objetivo de detalhar com maior clareza a implementação do sistema de comunicação do projeto, este detalhamento ocorrerá de maneira \textit{bottom-up}, apresentando toda a especificação técnica dos equipamentos de \textit{hardware} utilizados na solução,seguido da específicação em nível de \textit{Software}.
+	Com o objetivo de detalhar com maior clareza a implementação do sistema de comunicação do projeto, optou-se por utilizar a estratégia \textit{bottom-up}, apresentando toda a especificação técnica dos equipamentos de \textit{hardware} utilizados na solução,seguido da específicação em nível de \textit{Software}.
 
 	\subsection{Hardware} % (fold)
 	\label{sub:hardware}
@@ -27,7 +27,7 @@
       		\label{img:datasheet_cd4050}                                            
     	\end{figure}
 
-    	Por falha de observação, durante a primeira tentativa de montagem desse sistema, acidentalmente foi inserido no RX do módulo uma tensão de 5V, como mencionado anteriormente o módulo trabalha com tensões máximas de 3.3V o que resultou na queima do RX do componente impossibilitando a comunicação seraial entre o módulo e o microprocessador, como solução foi adquirido outro módulo igual para continuar o processo de montagem, porem o módulo comprado apresentou falhas na sua inicialização de forma que não foi possível configura-lo da forma desejada, então como última solução foi adquirido um kit de desenvolvimento que garante a correta alimentação exigida pelo ESP8266 facilitando a utilização do mesmo, este foi devidamente configurado de acordo com o projeto e posteriormente será incorporado ao protótipo do projeto, a figura \ref{img:kit_desenvolvimento} apresenta o kit adquirido.
+    	Por falha de observação, durante a primeira tentativa de montagem desse sistema, acidentalmente foi inserido no RX do módulo uma tensão de 5V, como mencionado anteriormente o módulo trabalha com tensões máximas de 3.3V o que resultou na queima do RX do componente impossibilitando a comunicação serial entre o módulo e o microprocessador, como solução foi adquirido outro módulo igual para continuar o processo de montagem, porem o módulo comprado apresentou falhas na sua inicialização de forma que não foi possível configura-lo da forma desejada, então como última solução foi adquirido um kit de desenvolvimento que garante a correta alimentação exigida pelo ESP8266 facilitando a utilização do mesmo, este foi devidamente configurado de acordo com o projeto e posteriormente será incorporado ao protótipo do projeto, a figura \ref{img:kit_desenvolvimento} apresenta o kit adquirido.
 
     	\begin{figure}[H]                                                           
       		\centering                    
