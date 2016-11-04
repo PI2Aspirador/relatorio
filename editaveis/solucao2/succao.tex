@@ -27,7 +27,7 @@
 			\label{img:vista_isometrica_de_montagem}
 		\end{figure}
 
-		Para testar a funcionalidade de um novo modelo de construção a também da eficiência de apenas um cooler, foi feito um protótipo em menor escala utilizando um cooler menor de 5 cm e um compartimento de plástico de formato cilíndrico. Foi fixado o cooler no topo do cilindro e foi feito um furo de diâmetro menor abaixo dele. Foi feito um furo na lateral do cilindro para encaixar um tubo por onde o ar é sugado. O protótipo 2 é mostrado na figura \ref{img:cooler_5cm}.
+		Para testar a funcionalidade de um novo modelo de construção e também a eficiência de apenas um cooler da eficiência de apenas um cooler, foi feito um protótipo em menor escala utilizando um cooler menor de 5 cm e um compartimento de plástico de formato cilíndrico. Foi fixado o cooler no topo do cilindro e foi feito um furo de diâmetro menor abaixo dele. Foi feito um furo na lateral do cilindro para encaixar um tubo por onde o ar é sugado. O protótipo 2 é mostrado na figura \ref{img:cooler_5cm}.
 
 		\begin{figure}[H]
 			\centering
@@ -45,7 +45,7 @@
 			\label{img:cooler_14cm}
 		\end{figure}
 
-		O protótipo 3 foi construído para aumentar a potência do sistema construindo-o com dois coolers utilizando o mesmo esquema de construção. Também para reduzir a alimentação fornecida aos motores. Foi reduzida a altura do sistema, a fim de reduzir perdas de carga e adicionado um cooler em uma das paredes. Ao final obteve o seguinte protótipo:
+		O protótipo 4 foi construído para aumentar a potência do sistema construindo-o com dois coolers utilizando o mesmo esquema de construção. Também para reduzir a alimentação fornecida aos motores. Foi reduzida a altura do sistema, a fim de reduzir perdas de carga e adicionado um cooler em uma das paredes. Ao final obteve o seguinte protótipo:
 
 		\begin{figure}[H]
 			\centering
@@ -156,22 +156,44 @@
 
 \subsection{Validação experimental} % (fold)
 	\label{sub:validação_experimental}
+\begin{itemize}
+\item \textbf{Protótipo 1}
 
-\subsubsection{Protótipo 1}
 Após a finalização da construção do protótipo 1, os coolers foram ligados à voltagem de 12V com corrente de 1.5 A. O resultado não foi satisfatório. Não houve nenhuma sucção mesmo alterando o diâmetro do buraco por onde entra o ar e sua posição. Foi suposto que o problema seriam os coolers. Então foi planejada uma montagem utilizando apenas um deles para verificar seu funcionamento isolado, para isso foi construído o protótipo 3. 
 
-\subsubsection{Protótipo 2}
+\item \textbf{Protótipo 2}
+
 Antes de realizar testes com o protótipo 3, foi realizado o teste do protótipo 2 a fim de testar o funcionamento do novo modelo de construção, Foi ligado na fonte a 12 V. O teste apresentou resultados positivos, apesar da sucção fraca por conta da voltagem e corrente do cooler serem baixos. De posse dos bons resultados com o modelo, seguiu-se a construção e testes do protótipo 3
 
-\subsubsection{Protótipo 3}
+\item \textbf{Protótipo 3}
+
 Foi fornecido a tensão de 12V e corrente de 1.5 A ao cooler do protótipo 3. O resultado foi negativo, pois apresentou uma eficiência muito baixa, com sucção quase imperceptível. Utilizando uma fonte de tensão, foi-se elevando a tensão até que ele indicasse uma melhora. Foi observado que enquanto a tensão era modificada, as hélices passavam a girar com maior velocidade e consequentemente sugavam com maior força. Ao fornecer o valor de tensão de 30 V, foi que o sistema alcançou um resultado que seria ótimo para o projeto. Mas seria inviável a fabricação do robô com uma bateria que fornecesse tal tensão.
 
-\subsubsection{Protótipo 4}    
+\item \textbf{Protótipo 4} 
+
 O último teste utilizando estes coolers consistiu em ligá-los a 12 V e 1 A cada. Era esperado que com essa nova montagem a eficiência fosse aumentada, pois a potência do sistema foi dobrada. Mas o resultado foi negativo, pois não apresentou mudanças com relação ao modelo utilizando apenas um cooler. Com base nos resultados obtidos com os protótipos mostrados, o grupo chegou à conclusão de que os coolers não seriam utilizados, pois não mostraram resultados bons que fossem viáveis ao projeto. Os motores elétricos dos coolers possuíam uma potência incompatível com o tipo e o tamanho da hélice do mesmo, gerando um fluxo de massa baixo, menor que o indicado pelos fabricantes. 
 
-\subsubsection{Protótipo 5}
+\item \textbf{Protótipo 5}
+
 Foi realizado o teste com o protótipo utilizando a hélice que foi construída. Mas por defeitos de fabricação, as hélices durante a rotação colidiam com a estrutura, assim o ar era soprado com menor velocidade, consequentemente sugava um fluxo baixo de ar. 
 Foi feita outro protótipo utilizando o mesmo modelo de hélice construída com CD seguindo o mesmo modelo de estrutura, mas novamente, as hélices não giravam livremente, pois colidiam com as outras partes da estrutura. Graças à essas assimetrias e defeitos de fabricação foi observado uma grande vibração do sistema. Diante da dificuldade de construir uma estrutura sem defeitos e visando reduzir as vibrações, para que ela não danifique a estrutura do robô e aumentar a eficiência do ventilador, foi construído o protótipo 6.
 
-\subsubsection{Protótipo 6}
+\item \textbf{Protótipo 6}
+
 Os testes com esse protótipo foi feito ligando-a fonte de 12V e 4.4 A. O resultado foi positivo apresentando uma sucção forte, sugando toda a sujeira que foi disponibilizada para o teste. O teste com a vassoura mágica também foi realizado, ligando o motor do eixo à fonte. Observou-se que por conta da grande velocidade de rotação do motor, as partículas de sujeiras eram lançadas para longe, ao invés de serem carregadas para seu interior. Foi colocado um tecido com pelos atrás da vassoura, limitando o movimento de partículas naquela direção, garantindo que elas fossem depositadas no interior da vassoura. Com esses dois subsistemas de limpeza prontos e funcionando, foi feita a conexão entre eles e realizado o teste. Os dois motores foram ligados à tensão de 12V e 6V e simulou-se o movimento do robô passando-o apenas uma vez por cima da sujeira. O resultado foi positivo, o sistema foi capaz de colher cerca de 60\% das partículas que foram colocadas para teste.
+
+	\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{figuras/antes_e_depois_succao.jpg}
+			\caption{Antes e depois do teste com o sistema de sucção pronto.}
+			\label{img:antes_e_depois}
+		\end{figure}
+\end{itemize}
+
+Para a próxima etapa do projeto em que é feita a integração dos sub sistemas, serão realizados os testes:
+\begin{enumerate}
+	\item Integração com a parte da Energia: \\ Alimentar o aspirador com a bateria e testar a eficácia de aspiração de partículas.
+	\item Integração com a parte da eletrônica: \\ - Alimentar o motor da escova e garantir que ele esteja rodando; \\ - Testar os transistores do motor da escova e do aspirador; \\ - Testar o sinal de controle do arduíno até os transistores.
+	\item Integração com a parte da estrutura: \\ Com a base do robô pronta, fixar o aspirado e a vassoura mágica na estrutura e testar o funcionamento das duas partes, principalmente a parte da escova se está em uma distância suficiente do chão para que funcione sem problemas.
+	\item Integração total: \\ Ligar a aspiração e a escova com o sistema funcionando em 100\%.
+\end{enumerate}
