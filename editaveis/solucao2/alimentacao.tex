@@ -71,4 +71,30 @@ A construção demandou o uso de 3 capacitores, 1 resistor, 1 transistor, vário
 
 
 	% subsection carregador (end)
+\subsection{Supercapacitores}
+Supercapacitores vem sendo cada vez mais utilizados para o armazenamento de energia de curta duração, mesmo em situações onde pulsos intermitentes de alta energia são necessitados \cite{supercampos}.
+Das aplicações usuais pode-se destacar a utilização em flashes fotográficos e veículos de transporte público, como trens e metrôs, onde a frenagem libera energia que é armazenada nos supercapacitores que, por sua vez, transferem essa energia ao motor durante a arrancada, gerando  mais potência nesses momentos [1].
+Na tabela a seguir é um comparativo entre baterias e supercapacitores, também chamados de supercondensadores: 
+
+\begin{table}[]
+\centering
+\caption{Tabela 1 Bateria vs supercondensador.}
+\label{tab:supervbat}
+\begin{tabular}{lll}
+\hline
+\multicolumn{1}{|l|}{\textbf{}}                                                                & \multicolumn{1}{l|}{\textbf{Bateria}} & \multicolumn{1}{l|}{\textbf{Supercondensador}} \\ \hline
+\multicolumn{1}{|l|}{Tempo de carga}                                                           & \multicolumn{1}{l|}{1 a 5 horas}      & \multicolumn{1}{l|}{0,3 a 30 segundos}         \\ \hline
+\multicolumn{1}{|l|}{Tempo de descarga}                                                        & \multicolumn{1}{l|}{0,3 a 3 horas}    & \multicolumn{1}{l|}{0,3 a 30 segundos}         \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Densidade de Energia\\ (Wh/kg)\end{tabular}}   & \multicolumn{1}{l|}{10 a 100}         & \multicolumn{1}{l|}{1 a 10}                    \\ \hline
+\multicolumn{1}{|l|}{Cliclo de vida}                                                           & \multicolumn{1}{l|}{1000}             & \multicolumn{1}{l|}{\textgreater 500000}       \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Densidade de\\ Potência (W/kg)\end{tabular}}   & \multicolumn{1}{l|}{\textless 1000}   & \multicolumn{1}{l|}{\textless 10000}           \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Eficiência de carga\\ e descarga\end{tabular}} & \multicolumn{1}{l|}{0,7 a 0,85}       & \multicolumn{1}{l|}{0,85 a 0,98}               \\ \hline
+\begin{tabular}[c]{@{}l@{}}Temperatura de\\ operação\end{tabular}                              & -20 a 100 oC                          & -40 a 65 oC                                   
+\end{tabular}
+\end{table}
+
+Analisando a tabela nota-se claramente que supercapacitores são melhor utilizados quando sua aplicação se da em curto espaços de tempo. 
+A tensão dos supercapacitores diminui, com a descarga, de forma linear, o que acarreta em um não aproveitamento do espectro energético do dispositivo \cite{supersantos}.
+Ainda temos que supercapacitores perdem maior quantidade de energia com a auto descarga \cite{supersantos}.
+O projeto em questão necessita de um tempo longo (quando comparado ao tempo de descarga de um supercapacitor) de uso, além disso, os outros fatores supracitados influenciam de forma desfavorável ao supercapacitor, acarretando na não escolha desse método de armazenamento de energia.
 % section alimentação (end)
