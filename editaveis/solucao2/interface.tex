@@ -23,3 +23,37 @@ bootstrap-sass                      & Para layout das páginas                  
 rails-erd                           & Para gerar diagrama de classe             \\ \hline
 \end{tabular}
 \end{table}
+
+A figura \ref{img:diagrama} mostra o diagrama de domínio do projeto
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{figuras/erd.pdf}
+	\caption{Diagrama de domínio.}
+	\label{img:diagrama}
+\end{figure}
+
+A classe \textit{User} foi criada para realizar o login na aplicação, sendo utilizada em conjunto com a \textit{gem} devise\_ldap\_authenticable. Ela possui um relacionamento com a classe \textit{Role} que atribui uma função ao usuário. Atualmente, só está sendo utilizado a função de administrador. Por fim, a classe Agenda é responsável por guardar os agendamentos feitos pelo usuário. O código da interface do R2-PI2 está no \href{https://github.com/PI2Aspirador/railsApp}{Github}.
+
+As imagens a seguir mostram como está a interface.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{figuras/home_interface.png}
+	\caption{Interface - Home.}
+	\label{img:home}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{figuras/login.png}
+	\caption{Interface - Login.}
+	\label{img:login}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{figuras/agendamento.png}
+	\caption{Interface - Agendamento.}
+	\label{img:agendamento}
+\end{figure}
