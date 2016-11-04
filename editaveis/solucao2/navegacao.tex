@@ -19,11 +19,11 @@
 	\subsection{Running} % (fold)
 	 \label{sub:running}
 	 
-	 	O algoritmo de navegação utilizado durante este contexto é bastante simples, o qual envolve uma estratégia de navegação aleatória. Basicamente, o robô sempre tenderá a andar para frente, quando for encontrado um obstáculo, o servidor enviará uma ordem para desviar daquele obstáculo, levando em consideração as distâncias laterais do robô. Para isso, o robô utiliza 3 sonares, um apontado para a frente, e os outros dois apontados um para cada lado do robô.
+	 	O algoritmo de navegação utilizado durante este contexto é bastante simples, o qual envolve uma estratégia de navegação aleatória. Basicamente, o robô sempre tenderá a andar para frente, quando for encontrado um obstáculo, o servidor enviará uma ordem para desviar daquele obstáculo, levando em consideração as distâncias laterais do robô. Para isso, o robô utiliza 4 sonares, um apontado para a frente, e os outros dois apontados um para cada lado do robô.
 
 	 	Esta navegação aletarória ocorre até que seja determinado o recuo à base, seja por falta de bateria ou por entrada \textit{stop} por parte do usuário.
 
-	 	A utilização de \textit{encoders} é necessária para minimizar a margem de erro na angulação de curvas e distâncias percorridas. Porém, sua utilização está suspensa durante esta segunda fase do projeto, sendo implementado apenas na terceira etapa, fase de integração dos subsistemas.
+	 	% A utilização de \textit{encoders} é necessária para minimizar a margem de erro na angulação de curvas e distâncias percorridas. Porém, sua utilização está suspensa durante esta segunda fase do projeto, sendo implementado apenas na terceira etapa, fase de integração dos subsistemas. 
 	 % subsection running (end) 
 
 	 \subsection{De volta à base (Back)} % (fold)
@@ -53,4 +53,8 @@
 			\label{img:back2}
 		\end{figure} 
 	 % subsection de_volta_a_base_ (end)
+
+	 \subsection{Testes}
+	
+		Ainda não foram realizados testes neste subsistema. Os testes com relação ao running não será realizado pois o robô irá andar de forma aleatória. Com relação ao back, o teste será feito colocando o robô com alguns obstáculos em diferentes disposições e o robô deverá chegar à base sem se perder.
 % section navegação (end)
