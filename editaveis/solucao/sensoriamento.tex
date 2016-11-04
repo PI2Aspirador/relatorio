@@ -15,7 +15,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 % subsection instrumentação (end)
 
-	Na robótica móvel um dos tipos mais importantes de sensores são os que medem distância (Braunl, 2006)(inserir referência). A parte de instrumentação do robô tem como principais objetivos auxiliar na navegação, solucionando o problema de colisão indesejada com a parede e outros móveis presentes na casa, e monitorar elementos vitais para certificar o funcionamento do mesmo.
+	Na robótica móvel um dos tipos mais importantes de sensores são os que medem distância \cite{braunl}. A parte de instrumentação do robô tem como principais objetivos auxiliar na navegação, solucionando o problema de colisão indesejada com a parede e outros móveis presentes na casa, e monitorar elementos vitais para certificar o funcionamento do mesmo.
 
 	Para isso, o robô do \textit{R2-PI2} será equipado com dois tipos de sensores de distância, apresentados na sessão \ref{sub:Medição_de_distância}, bem como um circuito medidor de bateria, apresentado na sessão \ref{sub:Medidor_de_bateria}
 
@@ -33,7 +33,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
   			Distância = \frac{tempo\ de\ ida\ e\ volta\ do\ sinal\ *\ velocidade\ do\ som}{2}
   		\end{equation}
 
-  		O sensor de ultrassom escolhido para o robô R2-PI2 foi o HC-SR04 que envia um sinal sinal com duração de 10 microsegundos e envia 8 pulsos de 40KHz para aguardar o retorno do sinal pelo receptor. Esse sensor mede distâncias entre 2 centímetros e 4 metros, datasheet disponível em \cite{datasheet_ultrassom}. A escolha deste sensor foi motivada pela facilidade de acesso ao componente e pela faixa que ele mede. Para desviar com segurança dos obstáculos estima-se que ele deverá ser detectado a 10 centímetros de distância do robô permitindo que sejam executados movimentos que desviem do objeto com segurança.
+  		O sensor de ultrassom escolhido para o robô R2-PI2 foi o HC-SR04 que envia um sinal sinal com duração de 10 microsegundos e envia 8 pulsos de 40KHz para aguardar o retorno do sinal pelo receptor. Esse sensor mede distâncias entre 2 centímetros e 4 metros, datasheet disponível em \cite{datasheet_ultrassom}. A escolha deste sensor foi motivada pela facilidade de acesso ao componente e pela faixa que ele mede. Para desviar com segurança dos obstáculos estima-se que ele deverá ser detectado a 5 centímetros de distância do robô permitindo que sejam executados movimentos que desviem do objeto com segurança.
 
   		\begin{figure}[H]                                                           
       		\centering                                                                
@@ -192,7 +192,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 			\begin{enumerate}
 				\item \textbf{Ponte H}:
 
-					Para que se possa controlar a direção e a velocidade dos motores , é necessário que a corrente elétrica possa fluir nas duas direções dentro de sua bobina com intuito de gerar campos magnéticos com intensidade e sentidos opostos. A configuração mais utilizada para controlar a corrente nesse projeto é um driver em ponte H (INOUE e OSUKA, 2004).
+					Para que se possa controlar a direção e a velocidade dos motores, é necessário que a corrente elétrica possa fluir nas duas direções dentro de sua bobina com intuito de gerar campos magnéticos com intensidade e sentidos opostos. A configuração mais utilizada para controlar a corrente nesse projeto é um driver em ponte H.
 
 					O circuito da Ponte H é constituído por quatro transistores que atuam como chave e que, dependendo da configuração do chaveamento, determinam o sentido de rotação dos motores, como pode ser observado na Figura \ref{img:configH}.
 
@@ -256,27 +256,18 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 					Para a frequência de trabalho nao ultrapassar os limites de hardware de potência na presença de cargas indutivas, como motores, é necessário pulsar um frequência que faça corrente estável para uma mesma largura de pulso, suavizando o movimento do motor.
 
-				%\item \textbf{Encoder}:
-%
-%					Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
+			  \item \textbf{Encoder}:
 
-%					\begin{figure}[H]
-%						\centering
-%						\includegraphics[scale=0.6]{figuras/encoder.png}
-%						\caption{Sistema de funcionamento de um encoder absoluto.}
-%						\label{img:encoder}
-%					\end{figure}
+					Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
 
-%					A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
+					\begin{figure}[H]
+						\centering
+						\includegraphics[scale=0.6]{figuras/encoder.png}
+						\caption{Sistema de funcionamento de um encoder absoluto.}
+						\label{img:encoder}
+					\end{figure}
 
-%					Para esse projeto escolheu-se o módulo encoder P17, mostrado na figura \ref{img:modulo_encoder}, que realiza a leitura do sentido do giro e pode ser integrado ao Arduíno.
-
-%					\begin{figure}[H]
-%						\centering
-%						\includegraphics[scale=0.6]{figuras/modulo_encoder.png}
-%						\caption{Módulo encoder.}
-%						\label{img:modulo_encoder}
-%					\end{figure}
+					A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
 
 			\end{enumerate}
 

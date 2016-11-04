@@ -61,7 +61,7 @@
 			\item \textbf{Faixa 5}: 72,8\% $\sim$ 66\%
 		\end{itemize}
 		
-		Considerando que o sistema de sucção consome cerca de seis vezes mais corrente do que o sistema de navegação do robô (4750mA - 836mA) e que são cinco faixas de tensão, estimou-se que um quinto da tensão útil é suficiente para o robô voltar para a base de carregamento com o sistema de sucção desligado. No entanto, sabendo que a curva de descarga de uma bateria não é linear, apenas após os testes empíricos será possível determinar com maior segurança se um ou dois quintos da tensão útil serão colocados à disposição do sistema de navegação para o robô poder retornar à base. 
+		Considerando que o sistema de sucção consome cerca de seis vezes mais corrente do que o sistema de navegação do robô e que são cinco faixas de tensão, estimou-se que um quinto da tensão útil é suficiente para o robô voltar para a base de carregamento com o sistema de sucção desligado. No entanto, sabendo que a curva de descarga de uma bateria não é linear, apenas após os testes empíricos será possível determinar com maior segurança se um ou dois quintos da tensão útil serão colocados à disposição do sistema de navegação para o robô poder retornar à base. 
 
 		Assim, enquanto a tensão da bateria estiver dentro das quatro faixas de tensão, o robô estará executando a rotina de limpeza e quando estiver na última faixa ele estará retornando para a base. 
 
@@ -223,5 +223,29 @@
 
 \subsection{Validação experimental} % (fold)
 	\label{sub:validação_experimental}
+	\begin{itemize}
+		\item \textbf{Teste do controle sistema de controle + sistema de distância}
 
-	APRESENTAR AQUI OS TESTES PARA VALIDAÇÃO.
+			Para testar o sistema de controle e validar seu funcionamento adequado, conectou-se os sensores ultrassônicos ao ATMega assim como a ponte H e os motores acoplados as rodas. Depois disso criou-se funções de locomoção com as direções básicas para os motores: frente, ré, esquerda, direita e parar. E criou-se um algoritmo para implementar o fluxograma feito no controle de distância. O algoritmo encontra-se disponível em \href{https://github.com/kaiocoelho/CodigoESP/blob/master/codigo_teste/Teste_ultrassom.ino}{Teste ultrassom}.
+
+			Estando prontos os projetos de hardware e software, carregou-se o código no ATMega e ligou-se a fonte da ponte H. O carrinho então começou a andar e colocou-se obstáculos em sua frente observando que o controle e sensores estavam trabalhando de forma eficaz e desviando da maior parte dos obstáculos conforme o esperado.
+
+		\item \textbf{Teste Medidor de Bateria}
+
+			Com o circuito todo montado em uma \textit{protoboard}, sem o divisor de tensão inicial, inseriu-se uma tensão de 12V na entrada. Todos os cinco LEDs acenderam e conforme a tensão de entrada ia mudando de faixa de tensão, os LEDs respectivos iam apagando. O teste mostrou que o circuito funciona como o esperado.
+
+			No entanto, esse circuito foi montado em uma placa impressa e ainda não foi testado com a bateria que será utilizada no protótipo.
+
+			Para ajudar a faixa crítica de tensão, é necessário saber qual a tensão mínima real com todo o sistema do robô em funcionamento.
+
+			Após integrar todo o sistema do robô, será necessário deixar todos os subsistemas funcionando até a bateria parar de fornecer a corrente necessária. Esse teste permitirá conhecer o seu tempo máximo de funcionamento e a tensão mínima para calibrar o medidor.
+
+		\item \textbf{Teste do circuito de proteção}
+		
+			O circuito de proteção óptica foi testado colocando um arduino controlar um sistema alimentado a 9V.
+
+			Nesse teste, foi possível perceber que o arduíno controla muito bem o circuito de 9V por meio do optoacoplador, mesmo sem o contato elétrico com os fios.
+
+			O circuito ainda precisará ser testado com o sistema de sucção na fase de integração dos subsistemas. Nesse teste, será enviado um pulso do arduíno para acionar o motor do sistema de sucção.
+	\end{itemize}
+

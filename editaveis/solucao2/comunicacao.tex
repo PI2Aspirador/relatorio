@@ -101,9 +101,11 @@
 		Com o objetivo de apresentar a realização dos testes e procedimentos relacionados a comunicação do sistema, tanto para o sistema de \textit{Hardware} quanto para \textit{Software}, segue exemplos dos testes realizados para tal.
 
 		\begin{itemize}
-			\item \textbf{Comunicação módulo ESP8266 com Arduino MEGA}
+			\item \textbf{Comunicação entre módulo ESP8266 e ATMega}
 
-				escreva um texto aqui...
+				O teste inicial da comunicação entre o ATMega e o ESP8266 foi realizado utilizando um código que envia ao módulo comandos com o padrão \textit{AT+comando}, ao receber tal comando o módulo deveria responder de acordo com sua programação de fábrica, sendo assim nesse teste foram enviados os comandos \textit{AT+GMR}, \textit{AT+CIFSR} e \textit{AT+CWLAP}. Os retornos esperados pelo ATMega eram, respectivamente, a versão do \textit{firmware}, o \textit{IP} adquirido ao conectar na rede WiFi e uma lista com todas as redes WiFi detectadas.
+
+				Os resultados desse teste estão apresentados na figura \ref{img:teste_arduino_modulo}, o código utilizado para esse teste esta disponível em \href{https://github.com/kaiocoelho/CodigoESP/blob/master/codigo_teste/codigo_teste_inicial.ino}{Teste ESP8266}.
 
 				\begin{figure}[H]                                                           
 			  		\centering                    
@@ -112,7 +114,9 @@
 			  		\label{img:teste_arduino_modulo}                                            
 				\end{figure}
 
-				Com a comunicação concluída entre o Arduino e o Módulo Wifi, é possível trabalhar em um nível de abstração maior, partindo para a lógica de software e comunicação do sistema. Tendo acesso a rede wifi, foi possível implementar uma comunicação via TCP/IP, utilizando o protocolo de comunicação apresentado nas tabelas \ref{tab:protocolo_comunicacao1} e \ref{tab:protocolo_comunicacao2}.
+			\item \textbf{Comunicação entre ATMega e Raspberry Pi}
+
+				Com a comunicação concluída entre o Arduino e o Módulo Wifi, é possível trabalhar em um nível de abstração maior, partindo para a lógica de software e comunicação do sistema. Tendo acesso a rede wifi, foi possível implementar uma comunicação via TCP/IP, utilizando o protocolo de comunicação apresentado nas tabelas \ref{tab:protocolo_comunicacao1} e \ref{tab:protocolo_comunicacao2}.		
 
 				Na Figura \ref{img:dois_lados_comunicacao}, é apresentada a comunicação sendo feita entre o Arduino e a Raspberry, onde o Arduino envia informações sobre 3 sonares, a raspberry processa essas informações e retorna os comandos necessários para desviar de obstáculos e se locomover pelo ambiente.
 
