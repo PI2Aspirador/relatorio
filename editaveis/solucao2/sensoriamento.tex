@@ -11,13 +11,13 @@
 
 		\subsubsection{Controle de distância}
 		\label{sub:Controle_de_distância}
-		A estratégia de controle utilizada na locomoção do R2-PI2, analisa as seguintes situações, o robô se locomoverá sempre para a frente enquanto não encontrar obstáculos em seu caminho. Na detecção de um objeto, os sensores posicionados a direta e a esquerda do robô farão a medição de distância. O aspirador tomará a decisão de desviar para o lado contrário da menor distância medida ou na ausência da mesma. Na possibilidade de ausência de distância ou impossibilidade de cálculos, o desvio será feito a direita por padrão. A figura \ref{img:circuito_de_controle_dos_motores} mostra o fluxograma do algoritmo utilizado na locomoção do aspirador.
+		A estratégia de controle utilizada na locomoção do R2-PI2, analisa as seguintes situações, o robô se locomoverá sempre para a frente enquanto não encontrar obstáculos em seu caminho. Na detecção de um objeto, os sensores posicionados a direta e a esquerda do robô farão a medição de distância. O aspirador tomará a decisão de desviar para o lado contrário da menor distância medida ou na ausência da mesma. Na possibilidade de ausência de distância ou impossibilidade de cálculos, o desvio será feito a direita por padrão. A figura \ref{img:fluxograma_eletronica} mostra o fluxograma do algoritmo utilizado na locomoção do aspirador.
 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[scale=0.8]{figuras/fluxograma_eletronica.png}
 			\caption{Fluxograma do algoritmo de locomoção do R2-PI2, realizado pela equipe de eletrônica para testes iniciais.}
-			\label{img:circuito_de_controle_dos_motores}
+			\label{img:fluxograma_eletronica}
 		\end{figure}
 
 		No caso da identificação de degraus ou desníveis o algoritmo consiste na simples análise de obstáculos ou não. Por limitação do sensor IR, a distância máxima medida é de 2.5 cm, então enquanto uma distância escolhida como aproximadamente 1cm estiver sendo medida, o que significa que o robô está em contato com o chão, ele continuará se movimentando normalmente, quando essa distância medida for maior que 1 cm, o aspirador irá parar, dar uma ré e escolher a melhor rota para continuar seguindo.
