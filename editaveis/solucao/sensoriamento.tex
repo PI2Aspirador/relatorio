@@ -258,16 +258,74 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 			  \item \textbf{Encoder}:
 
-					Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
+          Uma variável que influencia na navegação do robô é a velocidade. Para medi-la são necessárias informações do tempo que robô demorou para percorrer determinada distância, considerando um trecho de aceleração constante. O tempo pode ser determinado pelo próprio microcontrolador, mas a distância precisa ser determinada de alguma outra forma. A maneira mais convencional de se medir a distância percorrida por um robô é por meio de encoders.
 
-					\begin{figure}[H]
-						\centering
-						\includegraphics[scale=0.6]{figuras/encoder.png}
-						\caption{Sistema de funcionamento de um encoder absoluto.}
-						\label{img:encoder}
-					\end{figure}
+          O encoder é fundamental para ter um feedback do motor e para determinar a posição e a orientação do robô. Podem ser ópticos ou magnéticos e tem como finalidade contar a rotação do eixo das rodas \cite{embedded}. A figura \ref{encoder} mostra como funciona um encoder ópticoe na \ref{sinal_enc} é possível observar como o sinal lido pelo sensor é transformado em sinal ou pulso digital.
 
-					A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
+          \begin{figure}[h]
+            \centering
+            \includegraphics[scale=1]{figuras/encoderoptico.png}
+            \caption{Encoder Óptico. Fonte:\cite{NewtonB_enc}}
+            \label{encoder}
+          \end{figure}
+          
+          \begin{figure}[h]
+            \centering
+            \includegraphics[scale=1]{figuras/sinalencoder.png}
+            \caption{Sinal gerado pelo encoder óptico. Fonte:\cite{NewtonB_enc}}
+            \label{sinal_enc}
+          \end{figure}
+
+          O encoder pode ser simples, incremental, de quadratura ou absoluto. O encoder simples indentifica o quanto a roda girou, mas não consegue dizer qual o sentido da rotação. O encoder incremental e o de quadratura reconhece o quanto a roda girou e em qual sentido, sendo o de quadratura mais preciso. Por fim, o encoder absoluto identifica o quanto a roda girou, o sentido da rotação e o ângulo do eixo, os quatro tipos de encoders são apresentados na figura \ref{4encoders}.
+
+          \begin{figure}[h]
+            \centering
+            \includegraphics[scale=.4]{figuras/encoders.png}
+            \caption{Tipos de encoder. Fonte: Adaptado de \href{http://www.unorobotica.com.br/docs/encoder.pdf}{Uno robótica educacional}}
+            \label{4encoders}
+          \end{figure}
+
+          Cada encoder tem uma quantidade específica de pulsos por rotação definida durante a sua fabricação. A partir da leitura da quantidade de pulsos que a roda girou tem-se um valor aproximado de quantos ângulos ela rotacionou. Combinando esse dado com o tempo entre as leituras inicial e final do sensor IR ($\Delta$\,t), obtem-se a velocidade angular por meio das equações abaixo:
+
+          \begin{eqnarray} 
+            \label{eq2}
+            ângulo\,de\,rotação\,da\,roda\, (\Delta\theta)=360^{\circ}* \frac{pulsos\,lidos\,pelo\,sensor}{pulsos\,por\,rotação} 
+          \end{eqnarray}
+
+          \begin{eqnarray} 
+            \label{eq3}
+            velocidade\,angular (\Delta\,\omega)= \frac{\Delta\,\theta}{variação\,do\,tempo (\Delta\,t)} 
+          \end{eqnarray}
+
+          A partir da velocidade angular obtem-se a velocidade angular (\ref{eq4}) e a distância percorrida (\ref{eq5}).
+
+          \begin{eqnarray} 
+            \label{eq4}
+            velocidade\,linear\,(\Delta\,v) =\frac{\Delta\,\omega}{\Delta\,t}
+          \end{eqnarray}    
+          
+          \begin{eqnarray} 
+            \label{eq5}
+            Distância\,percorrida(\Delta\,d)=\Delta\,v *\Delta\,t
+          \end{eqnarray}
+
+          A equação \ref{eq6} apresenta uma outra forma de se obter a distância percorrida sabendo o raio da roda (R) na qual o encoder está ligado.
+
+          \begin{eqnarray} 
+            \label{eq6}
+            \Delta\,d=\frac{2\pi\,R\,*\,pulsos\,lidos\,pelo\,sensor}{pulsos\,por\,rotação} 
+          \end{eqnarray}
+
+					%Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
+
+					%\begin{figure}[H]
+						%\centering
+						%\includegraphics[scale=0.6]{figuras/encoder.png}
+						%\caption{Sistema de funcionamento de um encoder absoluto.}
+						%\label{img:encoder}
+					%\end{figure}
+
+					%A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
 
 			\end{enumerate}
 

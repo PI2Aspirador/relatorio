@@ -176,6 +176,19 @@
 			\caption{Circuito de proteção com acoplamento óptico.}
 			\label{img:circuito_de_proteção}
 		\end{figure}
+
+		\subsubsection{Encoder}
+		\label{sub:encoder}
+		Para medir a velocidade e auxiliar na navegação, foram instalados dois discos de encoder, uma em cada roda. Para realizar a leitura do encoder, cada um deles tem um sensor de velocidade composto por um LED IR e um fototransistor e um comparador. A figura \ref{discoeencoder} ilustram os componentes utilizados.
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[scale=0.6]{figuras/discoeencoder.png}
+			\caption{Sensor de velocidade e disco de encoder}
+			\label{discoeencoder}
+		\end{figure}
+
+		O disco utilizado tem 20 furos, o que significa que a sua resolução é de 9 $\circ $, com ele é possível enviar comando de giro e verificar se o robô está girando essa quantidade de graus.
 	
 	% subsection instrumentação (end)
 
@@ -247,5 +260,14 @@
 			Nesse teste, foi possível perceber que o arduíno controla muito bem o circuito de 9V por meio do optoacoplador, mesmo sem o contato elétrico com os fios.
 
 			O circuito ainda precisará ser testado com o sistema de sucção na fase de integração dos subsistemas. Nesse teste, será enviado um pulso do arduíno para acionar o motor do sistema de sucção.
+
+		\item \textbf{Teste do sensor IR para detecção de desnivelamento do piso}
+
+			O sensor IR se baseia na reflexão da luz no obstáculo. Além do sensor ser muito sensível aos raios solares, se o obstáculo for de um material que reflete pouco ou muito a luz emitida, a leitura terá muitos erros.
+
+			Foram realizados testes como sensor apontando para o chão a fim de testar se ele estava detectando bem possíveis desníveis. O teste inicial, realizado em um mesmo piso, foi satisfatório e retornou dados coerentes com os testes. No entanto, quando o robô foi para uma área de um piso mais reflexivo, sem alterar a altura do piso, houve uma mudança muito grande na detecção da distância pelo sensor. 
+
+			Para solucionar o problema, o sensor foi envolvido por uma fita escura para evitar a influência da luz do sol e serão aplicados filtros para pegar não apenas o valor instantâneo, como um valor médio medido em cerca de 10us para garantir que nenhum objeto mais ou menos reflexivo está interferindo nos dados.
+
 	\end{itemize}
 
