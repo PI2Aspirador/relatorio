@@ -224,6 +224,14 @@
 
         Melhorias podem ser incorporadas ao projeto. Primeiramente uma melhoria estética, através de pinturas e melhora na qualidade da junção das peças. Outro aspecto é o aumento da rigidez da estrutura que pode ser feito através da aplicação de alguns materiais por dentro da estrutura. Essa mudança irá tirar um pouco de espaço para os componentes, porém caso a base de recarga venha sofrer impactos, poderá resistir mais ao tempo.
 
+      \item Não integração do algoritmo de volta à base
+
+      Para realizar a volta do robô à base de recarga, seriam necessárias informações confiáveis de dados a respeito do giro dos motores e dos sensores de distância da base. Dado o curto período de integração, não foi possível amezinar o erro desses dados para torná-los confiáveis o suficiente para garantir o retorno da base. O algoritmo que calcularia o ângulo necessário para o robô retornar à base se encontra no GitHub.
+
+      \item Alteração na forma de processamento da navegação do robô
+
+      Originalmente, o plano para a navegação do robô era fazer com que a base de recarga, que possui uma Raspberry Pi, fizesse o processamento das informações coletadas pelo AT-Mega que se encontra no robô. Porém, quando foram realizados os testes de integração, percebeu-se que o robô não conseguia processar as informações dos sonares suficientemente rápido para evitar colisões. Com isso, viu-se necessário passar a responsabilidade de processamento dos sonares frontais para o próprio robô e os laterais continuam sendo processados na base. Assim, o robô faz a identificação das informações do ambiente e caso seja necessário parar, ele próprio faz esse processamento. Quando o robô precisa tomar uma decisão a partir dos sonares laterias sobre para qual lado é necessário fazer a curva, a decisão é processada na base e enviada para o robô.
+
    \end{itemize}
  		
 
