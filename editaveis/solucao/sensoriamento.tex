@@ -316,16 +316,21 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
             \Delta\,d=\frac{2\pi\,R\,*\,pulsos\,lidos\,pelo\,sensor}{pulsos\,por\,rotação} 
           \end{eqnarray}
 
-					%Os encoders são sensores acoplados no motor para medir a velocidade e posição angular de acordo com a rotação sensoriada por ele. A especificação dos encoders absolutos são medidas em contagem por rotação, CPR, pois de acordo com o número de divisões do encoder e o tamanho da roda conhecem as velocidades, angular e linear, e também a trajetória percorrida \cite{braga}.
+			  \item \textbf{IMU}
 
-					%\begin{figure}[H]
-						%\centering
-						%\includegraphics[scale=0.6]{figuras/encoder.png}
-						%\caption{Sistema de funcionamento de um encoder absoluto.}
-						%\label{img:encoder}
-					%\end{figure}
+          No espaço tridimensional, um corpo rígido qualquer pode efetuar translações e ou rotações em relação a cada um dos eixos de um sistema de coordenadas cartesianas: x, y e z. Identificar com precisão o deslocamento realizado por este corpo é fundamental para sistemas de navegação e posicionamento. Para conseguir suprir essa necessidade, é possível unir as informações obtidas através de um sensor de aceleração com os dados medidos por outro dispositivo: o giroscópio \cite{cao}. O dispositivo capaz de fornecer essas medições é conhecido como Unidade de Medida Inercial ($IMU$ – \textit{Inertial Measurement Unit}), e não precisa utilizar outro sinal externo para reconhecer o movimento realizado. 
 
-					%A posição relativa do aspirador de pó é uma variável muito importante para a navegação e localização que pode ser medida através do uso de encoders. Fixado junto ao motor, o encoder rotacional irá medir a quantidade de rotações do motor e, portanto, possibilitar a obtenção de informações sobre a velocidade angular e posição relativa. 
+          As $IMUs$ são sensores inerciais formados por acelerômetros e giroscópios. Sendo que os primeiros fornecem as medidas dos componentes da aceleração linear, enquanto que os últimos fornecem os componentes da velocidade angular\cite{sei}. 
+
+          A $IMU$ escolhida para utilizar nesse trabalho foi o sensor MPU-6050  que contém no mesmo chip um acelerômetro e um giroscópio tipo MEMS ($Micro$-$Electro$-$Mechanical$ $Systems$). São 3 eixos para o acelerômetro e 3 eixos para o giroscópio, sendo ao todo 6 graus de liberdade. A placa escolhida tem também um sensor de temperatura embutido no CI MPU6050, permitindo medições entre -40 e +85 ºC. O MPU possui também uma alta precisão devido ao conversor analógico digital de 16-bits para cada canal. Portanto o sensor captura os canais X, Y e Z ao mesmo tempo.
+
+          \begin{figure}[h!]
+              \centering
+              \includegraphics[keepaspectratio=true,scale=0.7]{figuras/mpu.png}
+              \centering
+              \caption{MPU6050 e seus graus de liberdade.}
+              \label{mpu}
+          \end{figure}
 
 			\end{enumerate}
 
