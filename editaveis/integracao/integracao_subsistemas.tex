@@ -1,4 +1,4 @@
-\section{Plano de integração e validação} % (fold)
+\section{Plano de integração} % (fold)
 \label{sec:plano_de_integração_e_validação}
 	Após implementar os subsistemas é necessário planjear a maneira como será realizada a integração entre eles, as figuras \ref{img:integração_robô} e \ref{img:integração_base} apresentam de maneira geral as relações existentes entre os subsistemas de acordo com as implmementações realizadas.
 
@@ -93,7 +93,7 @@
          \begin{figure}[H]                                                           
             \centering                                                                
             \includegraphics[scale=0.1]{figuras/SuccaoPC3_2.jpg}               
-            \caption{Teste de coleta de sujeira após o acréscimo de pano a escova.}    
+            \caption{Teste da coleta de sujeira com a abertura de parte da parede interna.}    
             \label{img:teste_coleta_pano}                                            
          \end{figure} 
 
@@ -104,7 +104,7 @@
          \begin{figure}[H]                                                           
             \centering                                                                
             \includegraphics[scale=0.1]{figuras/SuccaoPC3_3.jpg}               
-            \caption{Teste da coleta de sujeira com a abertura de parte da parede interna.}    
+            \caption{Teste de coleta de sujeira após o acréscimo de pano a escova.}    
             \label{img:teste_coleta_sujeira}                                            
          \end{figure}
 
@@ -121,22 +121,72 @@
 
       \item Adaptação do suporte das rodas:
 
-      	Para solucionar este problema, uma adaptação ao suporte foi feita para que as rodas não ficassem tão folgadas na estrutura, garantindo que não ficassem desalinhadas quando sujeitas a carga. Abaixo temos a comparação do primeiro suporte com o adaptado, que se mostrou muito mais eficiente nos testes:
+      	Para solucionar este problema, uma adaptação ao suporte foi feita para que as rodas não ficassem tão folgadas na estrutura, garantindo que não ficassem desalinhadas quando sujeitas a carga. Nas figuras \ref{img:eixoantigo} e \ref{img:eixonovo} temos a comparação do primeiro suporte com o adaptado, que se mostrou muito mais eficiente nos testes.
 
-   			(Inserir figuras e fazer a referencia acima)
+   		\begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.5]{figuras/eixoantigo.png}               
+            \caption{Roda com suporte largo.}    
+            \label{img:eixoantigo}                                            
+         \end{figure}
+
+        \begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.5]{figuras/eixonovo.png}               
+            \caption{Roda com suporte justo.}    
+            \label{img:eixonovo}                                            
+         \end{figure}
 
    	  \item Posicionamento das rodas:
 
-   	  	Para solucionar este problema, uma nova posição para as rodas foi definida de modo que esta pudesse oferecer uma estabilidade melhor, consequentemente aguentando uma distribuição mais uniforme de peso. As rodas foram deslocadas um pouco, não ficando mais no centro, mas na parte traseira da base, o antes e depois das modificações pode ser visto nas imagens abaixo:
+   	  	Para solucionar este problema, uma nova posição para as rodas foi definida de modo que esta pudesse oferecer uma estabilidade melhor, consequentemente aguentando uma distribuição mais uniforme de peso. As rodas foram deslocadas um pouco, não ficando mais no centro, mas na parte traseira da base. O resultado das modificações são mostrados nas figuras \ref{img:baseantiga} e \ref{img:basenova}.
 
-   			(Inserir figuras e fazer a referencia)
+   		\begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.6]{figuras/baseantiga.png}               
+            \caption{Base com furos centrais.}    
+            \label{img:baseantiga}                                            
+         \end{figure}
+
+        \begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.6]{figuras/basenova.png}               
+            \caption{Base com furos na parte traseira.}    
+            \label{img:basenova}                                            
+         \end{figure}
 
    	  \item Adição dos encoders na estrutura:
 
 
-   		Feitos os furos constatou-se que o eixo que seria fixado o encoder deveria ser alongado, caso contrário não seria possível a adaptação. Para alongar o eixo, foram utilizados raios de bicicleta, que foram parafusados ao eixo e tiveram o encoder preso em sua ponta com massa plástica, garantindo uma fixação segura. Os sensores foram presos a base com parafusos. Pode-se observar os resultados da adaptação nas imagens a seguir:
+   		Feitos os furos constatou-se que o eixo que seria fixado o encoder deveria ser alongado, caso contrário não seria possível a adaptação. Para alongar o eixo, foram utilizados raios de bicicleta, que foram parafusados ao eixo e tiveram o encoder preso em sua ponta com massa plástica, garantindo uma fixação segura. Os sensores foram presos a base com parafusos. Os resultados da adaptação são apresentados nas figuras \ref{img:encoder1}, \ref{img:eixoencoder}, \ref{img:fixacao_encoder} e \ref{img:novosistema}.
 
-   			(Inserir figuras e fazer as referencias)
+   		\begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.5]{figuras/encoder1.png}               
+            \caption{Suporte com corte para o eixo do encoder.}    
+            \label{img:encoder1}                                            
+         \end{figure}
+
+        \begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.5]{figuras/eixoencoder.png}               
+            \caption{Alongamento do eixo com encoder.}    
+            \label{img:eixoencoder}                                            
+         \end{figure}
+
+         \begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.5]{figuras/fixacaoencoder.png}               
+            \caption{Fixação do sesor de velocidade.}    
+            \label{img:fixacao_encoder}                                            
+         \end{figure}
+
+        \begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.4]{figuras/novosistema.png}               
+            \caption{Encoder acoplado a estrutura do robô.}    
+            \label{img:novosistema}                                            
+         \end{figure}
 
    \end{itemize}
  		
