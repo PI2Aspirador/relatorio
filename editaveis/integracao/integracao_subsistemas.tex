@@ -267,6 +267,19 @@
 
       Originalmente, o plano para a navegação do robô era fazer com que a base de recarga, que possui uma Raspberry Pi, fizesse o processamento das informações coletadas pelo AT-Mega que se encontra no robô. Porém, quando foram realizados os testes de integração, percebeu-se que o robô não conseguia processar as informações dos sonares suficientemente rápido para evitar colisões. Com isso, viu-se necessário passar a responsabilidade de processamento dos sonares frontais para o próprio robô e os laterais continuam sendo processados na base. Assim, o robô faz a identificação das informações do ambiente e caso seja necessário parar, ele próprio faz esse processamento. Quando o robô precisa tomar uma decisão a partir dos sonares laterias sobre para qual lado é necessário fazer a curva, a decisão é processada na base e enviada para o robô.
 
+      \item Redimensionamento dos condutores
+
+      Durante a fase de integração e testes foi necessário realizar algumas alterações na parte de eletrônica. A bateria dimensionada fornece uma corrente muito alta para os condutores que estavam sendo utilizados, por isso foi necessário redimensionar os condutores para um diâmetro maior e também realizar os testes de circuitos em placas de fenolite com trilhas de estanho mais grossas , uma vez que as trilhas da protoboard não suportavam a corrente da bateria. Trocou-se também os resistores de $1/4$ de Watt por resistores de potência maior. Devido a utilização da placa de circuito impresso com trilhas de estanho, foi necessário também adicionar um material isolante entre as trilhas e a base metálica da estrutura do robô para evitar curtos.
+
+      \item Mudança nos transistores de chaveamento
+
+      Foi realizada a mudança dos transistores de chaveamento do circuito de controle dos motores por transistores de potência, que suportam uma corrente maior. Adicionou-se também um dissipador de calor na bateria dos motores e um sensor de temperatura para evitar acidentes com superaquecimento
+
+      \item Adição do encoder
+
+      Como citado anteriormente, o sistema de navegação está sujeito a problemas devido a interferências no sinal \textit{wi-fi} captado pelo módulo, por isso adicionou-se o encoder e a unidade de medida inercial como forma de melhorar a precisão de movimento e localização da posição do robô, auxiliando assim na  sua volta autônoma para a base.
+
+
    \end{itemize}
 
 
