@@ -104,7 +104,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
 \subsection{Hardware para Comunicação}
 \label{sub:Hardwar_para_Comunicação}
-  A parte de comunicação tem como objetivo coletar informações vindas dos sensores já apresentados, interpreta-las e envia-las para a base onde é feito o intefaceamento com o usuário através de um aplicativo para celular. Para essa comunicação serão utilizados 2 microprocessadores, são eles:
+  A parte de comunicação tem como objetivo coletar informações vindas dos sensores já apresentados, interpretá-las e enviá-las para a base onde é feito o intefaceamento com o usuário através de um aplicativo para celular. Para essa comunicação serão utilizados 2 microprocessadores, são eles:
 
     \subsubsection{ATMega 2560}
     Para controlar corretamente as informações obtidas por todos os sensores da parte de instrumentação do projeto é necessário um processador com uma grande quantidade de portas analógicas e digitais, sendo assim utilizaremos o ATMega 2560, que possui as seguintes características:
@@ -260,7 +260,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
 
           Uma variável que influencia na navegação do robô é a velocidade. Para medi-la são necessárias informações do tempo que robô demorou para percorrer determinada distância, considerando um trecho de aceleração constante. O tempo pode ser determinado pelo próprio microcontrolador, mas a distância precisa ser determinada de alguma outra forma. A maneira mais convencional de se medir a distância percorrida por um robô é por meio de encoders.
 
-          O encoder é fundamental para ter um feedback do motor e para determinar a posição e a orientação do robô. Podem ser ópticos ou magnéticos e tem como finalidade contar a rotação do eixo das rodas \cite{embedded}. A figura \ref{encoder} mostra como funciona um encoder ópticoe na \ref{sinal_enc} é possível observar como o sinal lido pelo sensor é transformado em sinal ou pulso digital.
+          O encoder é fundamental para ter um feedback do motor e para determinar a posição e a orientação do robô. Podem ser ópticos ou magnéticos e tem como finalidade contar a rotação do eixo das rodas \cite{embedded}. A figura \ref{encoder} mostra como funciona um encoder óptico e na \ref{sinal_enc} é possível observar como o sinal lido pelo sensor é transformado em sinal ou pulso digital.
 
           \begin{figure}[h]
             \centering
@@ -285,7 +285,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
             \label{4encoders}
           \end{figure}
 
-          Cada encoder tem uma quantidade específica de pulsos por rotação definida durante a sua fabricação. A partir da leitura da quantidade de pulsos que a roda girou tem-se um valor aproximado de quantos ângulos ela rotacionou. Combinando esse dado com o tempo entre as leituras inicial e final do sensor IR ($\Delta$\,t), obtem-se a velocidade angular por meio das equações abaixo:
+          Cada encoder tem uma quantidade específica de pulsos por rotação definida durante a sua fabricação. A partir da leitura da quantidade de pulsos que a roda girou tem-se um valor aproximado de quantos ângulos ela rotacionou. Combinando esse dado com o tempo entre as leituras inicial e final do sensor IR ($\Delta$\,t), obtém-se a velocidade angular por meio das equações abaixo:
 
           \begin{eqnarray} 
             \label{eq2}
@@ -297,7 +297,7 @@ Diante do projeto proposto, a equipe de eletrônica a princípio se propõe a de
             velocidade\,angular (\Delta\,\omega)= \frac{\Delta\,\theta}{variação\,do\,tempo (\Delta\,t)} 
           \end{eqnarray}
 
-          A partir da velocidade angular obtem-se a velocidade angular (\ref{eq4}) e a distância percorrida (\ref{eq5}).
+          A partir da velocidade angular obtém-se a velocidade angular (\ref{eq4}) e a distância percorrida (\ref{eq5}).
 
           \begin{eqnarray} 
             \label{eq4}

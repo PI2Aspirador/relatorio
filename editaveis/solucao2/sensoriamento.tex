@@ -125,7 +125,7 @@
 		\end{figure}
 
 
-		Para o circuito acima funcionar bem, a tensão de entrada do divisor de tensão deverá ser igual a tensão máxima da bateria. Como a tensão máxima da bateria é de 12.6V, fica inviável geral um sinal constante de 12.6V apenas para servir como referência do divisor. Sabendo que o ATMega gera um sinal de 5V, a tensão da bateria passará por um divisor de tensão  que será projetado para transformar os 12.6V em 5V de modo que seja possível utilizar os 5V do ATMega no medidor de bateria.
+		Para o circuito acima funcionar bem, a tensão de entrada do divisor de tensão deverá ser igual a tensão máxima da bateria. Como a tensão máxima da bateria é de 12.6V, fica inviável gerar um sinal constante de 12.6V apenas para servir como referência do divisor. Sabendo que o ATMega gera um sinal de 5V, a tensão da bateria passará por um divisor de tensão  que será projetado para transformar os 12.6V em 5V de modo que seja possível utilizar os 5V do ATMega no medidor de bateria.
 
 		Sabendo que a tensão de saída do novo resistor (Vout2) deve ser 5V e que a tensão de entrada (Vin2) é de 12.6V as resistências (Rc e Rd) utilizadas podem ser calculadas pela seguinte expressão:
 
@@ -192,7 +192,7 @@
 
 		\subsubsection{IMU}
 		\label{sub:IMU}
-			Para auxiliar na navegação do robô, utilizou-se a unidade de medida inercial MPU-6050 que contém um acelerômetro e um giroscópio embutidos. O MPU foi utilizado para atuar como sensor de posição do robô, podendo assim Identificar com precisão o deslocamento realizado por ele durante o processo de locomoção. É importante ressaltar que a escolha desse sensor foi feita apenas para complementar o algoritmo de navegação, uma vez que as medidas via RSSI são pouco precisas pois há muitas interferências no sinal recebido. O sensor no entanto está sujeito a falha no rastreamento de posição, se por exemplo houver uma mudança brusca de posição devido a um choque ou movimento inesperado do aspirador e de um instante para outro ele for levado para outro lugar por influências externas, acontecerá o que se chama de robô sequestrado (\textit{kidnapped robot problem}) onde o sensor não irá perceber essa mudança brusca e  manter os dados da sua localização anterior. 
+			Para auxiliar na navegação do robô, utilizou-se a unidade de medida inercial MPU-6050 que contém um acelerômetro e um giroscópio embutidos. O MPU foi utilizado para atuar como sensor de posição do robô, podendo assim identificar com precisão o deslocamento realizado por ele durante o processo de locomoção. É importante ressaltar que a escolha desse sensor foi feita apenas para complementar o algoritmo de navegação, uma vez que as medidas via RSSI são pouco precisas pois há muitas interferências no sinal recebido. O sensor no entanto está sujeito a falha no rastreamento de posição, se por exemplo houver uma mudança brusca de posição devido a um choque ou movimento inesperado do aspirador e de um instante para outro ele for levado para outro lugar por influências externas, acontecerá o que se chama de robô sequestrado (\textit{kidnapped robot problem}) onde o sensor não irá perceber essa mudança brusca e  manter os dados da sua localização anterior. 
 
 	
 	% subsection instrumentação (end)
