@@ -108,6 +108,87 @@ Tendo como base experimentos já realizados que visaram a construção de um car
 A construção vai demandar o uso de 3 capacitores, 1 resistor, 1 transistor, vários indutores (bobinas) e uma fonte de tensão contínua afim de se obter um circuito semelhante ao demonstrado na última figura.
 
 
+\subsection{Carregador com plug magnético}
+
+Este carregador deverá ser capaz de fornecer uma tensão próxima de 16V e corrente de 2A, sendo que o mesmo foi feito para garantir o carregamento das baterias já que existe o risco de que o carregador por indução não entregue a tensão necessária
+A tensão fornecida pela concessionária de energia elétrica é alternada ao passo que os dispositivos eletrônicos operam em tensão contínua. Então é necessário retificá-la e isto é feito por meio de circuitos retificadores que convertem corrente alternada em corrente contínua. Temos os retificadores monofásicos para uso em aparelhos eletrônicos de um modo geral e os retificadores polifásicos para uso em circuitos industriais de alta potência. 
+No circuito deste carregador é utilizado um retificador em ponte, um circuito elétrico com o objetivo de converter as tensões de alternadas para contínuas, por meio de um processo de conversão de elementos semicondutores, tais como a conexão com pontes de diodo, dispositivos eletrônicos feitos de silício ou germânio capazes de converter ac em dc. A corrente fornecida pela tomada é alternada, ou seja, mudam sua polaridade entre positivo e negativo com uma frequência de 60 Hz, porém para se carregar uma bateria é necessário fornecer corrente com contínua.
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/circuitoretificadorcarregador}
+	\caption{Circuito do tipo Retificador em ponte utilizado no carregador.}
+	\label{img:circuitoretificadorcarregador}
+\end{figure}
+
+Materiais utilizados:
+\begin{itemize}
+\item 1 Transformador de 16Vac com capacidade de 2A da marca Hayama;
+\item 4 Diodos 2A;
+\item 1 chave liga desliga;
+\item 1 cabo de força.
+\end{itemize}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/fiosiotransformador}
+	\caption{Fios de entrada e saída do transformador.}
+	\label{img:fiosiotransformador}
+\end{figure}
+
+Em resumo, o sistema começa a funcionar a partir  do momento em que o cabo de força é conectado a tomada normal, a chave liga desliga é acionada para a passagem de corrente e a tensão é rebaixada pelo transformador, sendo retificada através da disposição de 4 diodos na saída de baixa tensão.
+A tensão de 110V do não foi utilizada por conta de utilizarmos apenas as tomadas de entrada de 220V em Brasília, que por conta do transformador sofre uma queda para 13.13V como é possível ver na figura abaixo: 
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/medicaoafericaotensao}
+	\caption{Medição para aferição da tensão de saída.}
+	\label{img:medicaoafericaotensao}
+\end{figure}
+
+Observou-se que a tensão transformada, no lado de baixa, que deve ser entregue pelo carregador não foi de exatamente 16V. Essa queda de tensão pode ser explicada pelas perdas ocasionadas pelas resistências dos condutores bem como durante o processo de retificação em si.
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/carregadorsemplugmag}
+	\caption{Carregador sem o plug magnético.}
+	\label{img:carregadorsemplugmag}
+\end{figure}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/testedecorrentecarregador}
+	\caption{Teste de corrente.}
+	\label{img:testedecorrentecarregador}
+\end{figure}
+
+Foi feito um teste para visualizar a corrente a ser entregue usando um resistor com potência de 5W, de acordo com a figura abaixo, obtém-se uma corrente de 0,85A em uma tensão de 13,3V. Se aumentar a potência do resistor é possível aumentar a corrente.
+
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/resistorpotencia5w}
+	\caption{Resistor com potência de 5W.}
+	\label{img:resistorpotencia5w}
+\end{figure}
+
+Quanto ao conector com a carga a ser alimentada, no caso as baterias, escolheu-se que o mesmo seria do tipo plug magnético visando facilitar a conexão e honrar a proposta inicial do projeto de ser um dispositivo de funcionamento autônomo. O cabo de conexão está passando por testes e ajustes para poder ser acoplado à base do sistema já obtido a fim de disponibilizar mais uma solução viável para o suprimento de carga energética do sistema.
+O plug magnético é formado por duas peças. A primeira é um pequeno conector que é acoplado na entrada do robô. A segunda é um pequeno adaptador no qual é conectado o cabo do carregador e que possui uma extremidade magnética que se encaixa de forma natural e fluida na outra ponta, iniciando na hora a recarga. Os cabos ainda não foram implementados na estrutura do plug.
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/peca1peca2}
+	\caption{Peça 1 e Peça 2 Respectivamente.}
+	\label{img:peca1peca2}
+\end{figure}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{figuras/interacaopolosmagneticos}
+	\caption{Interação entre os pólos magnéticos.}
+	\label{img:interacaopolosmagneticos}
+\end{figure}
+
 	% subsection carregador (end)
 \subsection{Supercapacitores}
 Supercapacitores vem sendo cada vez mais utilizados para o armazenamento de energia de curta duração, mesmo em situações onde pulsos intermitentes de alta energia são necessitados \cite{supercampos}.
