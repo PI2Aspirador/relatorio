@@ -62,8 +62,20 @@
 
    			\item Originalmente não seriam utilizados encoders nas rodas, porém foi detectado que seriam necessários para melhorar o controle. Com isso o projeto original dos suportes das rodas e da base deveriam passar por algumas mudanças estruturais para poder adaptar tais componentes. O suporte feito originalmente não tinha os cortes necessários, então foi redesenhado para que pudesse ter, sem comprometer sua capacidade de fixação.
 
-
    		\end{enumerate}
+
+   		\item \textbf{Estrutura da base de recarga}
+   			\begin{enumerate}
+   				\item \textbf{Aproximação entre o robô e base de recarga}:
+
+   					O principal teste aplicado é o de encaixe entre o robô e a base, as baterias devem estar o mais próximo possível do carregador quando o veículo estacionar para a recarga. Além disso a altura da base de recarga deve ser menor que a altura do robô do chão para que o robô possa ficar em cima.
+
+
+   				\item \textbf{Acoplamentos dos componentes da base de recarga}:
+
+   					O projeto da base de recarga possui um volume total de aproximadamente 2000 cm$^3$. O sistema deve integrar além do carregador de bateria outros 2 objetos, um modem que ocupa um volume de 450 cm$^3$, a raspberry que ocupa um volume de 140 cm$^3$. Tirando esses dois objetos o resto do espaço é reservado para o carregador e fios elétricos para as ligações. Ou seja, o teste de acoplamento mostra que o subsistema atende as especificações do projeto.
+
+   			\end{enumerate}
 
    \end{itemize}
    
@@ -187,6 +199,30 @@
             \caption{Encoder acoplado a estrutura do robô.}    
             \label{img:novosistema}                                            
          \end{figure}
+
+      \item Mudanças na base de recarga:
+
+      	O tipo de carregamento das baterias do robô ainda é por indução, porém ocorreram adaptações nos desenhos da base de recarga para se adaptar a uma possível troca para um carregamento via tomada convencional. O sistema perdeu em dimensões, mas ainda consegue abrigar todos os componentes que deveria, como o carregador das baterias, o modem wifi e a Raspberry. As mudanças deixaram a base de recarga menor, mais versátil e com uma economia de materiais.
+
+      	\begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.8]{figuras/novocad.png}               
+            \caption{Novo CAD.}    
+            \label{img:novo_cad}                                            
+         \end{figure}
+
+        A ideia desse novo conceito é que ele esteja disponível para acoplar tanto um carregador por indução, que ficaria localizado na parte inferior da peça, como um carregador comum, onde o encaixe para tomadas ficaria localizado na parte superior do objeto.
+
+        \begin{figure}[H]                                                           
+            \centering                                                                
+            \includegraphics[scale=0.5]{figuras/novaestrutura.png}               
+            \caption{Fabricação da estrutura.}    
+            \label{img:nova_estrutura}                                            
+         \end{figure}
+
+        A fabricação da peça está sendo feita utilizando recipientes de plástico, unidos em formato de \lq\lq L\rq\rq, como mostra a figura acima. A questão mais difícil para a fabricação desse item está relacionada a junção dos dois recipientes.
+
+        Melhorias podem ser incorporadas ao projeto. Primeiramente uma melhoria estética, através de pinturas e melhora na qualidade da junção das peças. Outro aspecto é o aumento da rigidez da estrutura que pode ser feito através da aplicação de alguns materiais por dentro da estrutura. Essa mudança irá tirar um pouco de espaço para os componentes, porém caso a base de recarga venha sofrer impactos, poderá resistir mais ao tempo.
 
    \end{itemize}
  		
