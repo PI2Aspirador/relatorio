@@ -110,7 +110,7 @@ As tabelas \ref{tab:resultadotestescarregadorinducao} e \ref{tab:resultadotestes
 
 \begin{table}[]
 \centering
-\caption{Resultados dos testes.}
+\caption{Resultados do teste 1.}
 \label{tab:resultadotestescarregadorinducao}
 \begin{tabular}{l|l|l|l|}
 \cline{2-4}
@@ -122,7 +122,7 @@ As tabelas \ref{tab:resultadotestescarregadorinducao} e \ref{tab:resultadotestes
 
 \begin{table}[]
 \centering
-\caption{Resultados dos testes 2.}
+\caption{Resultados do teste 2.}
 \label{tab:resultadotestescarregadorinducao2}
 \begin{tabular}{l|l|l|l|}
 \cline{2-4}
@@ -133,9 +133,13 @@ As tabelas \ref{tab:resultadotestescarregadorinducao} e \ref{tab:resultadotestes
 \end{table}
 
 Nos testes iniciais foi possível analisar o desempenho do sistema para que as devidas alterações pudessem ser feitas. 
-Identificou-se que a bobina secundária deveria estar posicionada no inferior da estrutura da base do robô, visto que esta, devido ao material que a compõe, interfere de forma prejudicial ao fluxo que chega à segunda bobina. 
-Algumas alterações nos componentes do circuito também se fizeram necessárias para se iniciar a segunda fase de testes, na tentativa de atingir os valores necessários para a carga da bateria.
-Alterando os componentes os seguintes resultados foram obtidos:
+Identificou-se que a bobina secundária deveria estar posicionada no inferior da estrutura da base do robô, visto que esta, devido ao material que a compõe, interfere de forma prejudicial ao fluxo que chega à segunda bobina. Além da necessidade de se aumentar a tensão e a corrente a serem entregues pela ponte de diodo, pois necessitamos de uma tensão de 14.8V e uma corrente de 2A para alimentar a bateria.
+De fato pode-se constatar que a corrente obtida a partir dos testes realizados não é suficiente para realizar a recarga das baterias. Uma busca por novas alternativas para aumentar os parâmetros contínuos de saída na bobina secundária ainda estão sendo implementadas. De forma paralela uma nova solução, carregador com plug magnético, está sendo desenvolvida.
+
+Algumas alterações nos componentes do circuito se fizeram necessárias para se iniciar a segunda fase de testes, como: a substituição do transistor P2N2 por um transistor de potência IRF04A a fim de aumentar a capacidade do circuito, além da troca da resistência, na tentativa de atingir os valores necessários para a carga da bateria.
+Os testes efetuados na etapa dois tinham como objetivo, verificar a corrente e a tensão alternadas na bobina primária e os valores de tensão e corrente contínua que estavam sendo entregues pela ponte de diodo. Verificou-se experimentalmente que só a troca dos componentes não bastou para constatação desses valores, pois utilizamos uma protoboard que limitava a corrente em 1A, desta forma verificamos que a estrutura mais adequada para realização de testes futuros seria uma placa impressa feita especialmente para o nosso circuito.
+Descartamos a possibilidade de carregar as baterias com o carregador por indução, pois mesmo que conseguíssemos alcançar o valor da tensão desejada seria um desafio entregar a corrente solicitada pela bateria, além de que levando em consideração os testes realizados na primeira etapa, constatou-se que a corrente que deveria ser entregue para bateria deve ser 500 vezes maior do que a corrente entregue pelo primeiro protótipo.
+Concluiu-se que o carregador com plug magnético é a melhor solução para o carregamento da bateria, porém os testes com o carregador por indução irão permanecer a fim de se atingir melhorias do sistema e possíveis resultados para atividades futuras do \textit{R2-PI2}.
 
 \subsection{Carregador com plug magnético}
 
