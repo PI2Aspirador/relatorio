@@ -103,10 +103,39 @@ Esse conceito já é frequentemente utilizado em transformadores elétricos, mot
 	\label{img:diagrama_eletrico}
 \end{figure}
 
-Tendo como base experimentos já realizados que visaram a construção de um carregador por indução eletromagnética de forma artesanal, o grupo decidiu que deveríamos agir com a mesma linha de pensamento afim de ter o carregador para o projeto.
+A função do circuito da figura \ref{img:diagrama_eletrico} é transformar \textit{direct current} - DC em \textit{alternating current} – AC. Sabe-se que para carregar as baterias o sistema deve fornecer uma corrente contínua, para isso utilizou-se uma ponte de diodo entre a conexão da bobina secundária e o elemento que se desejou alimentar.
+Os primeiros testes foram realizados na estrutura supracitada, que representa o protótipo de um carregador por indução. Para isso foram utilizados três capacitores, um resistor, um transistor, vários indutores (bobinas).
+Os testes realizados objetivaram observar o comportamento das perdas na primeira parcela e verificar a tensão e corrente entregues na segunda parcela do sistema a fim verificar a eficiência e a viabilidade do modelo pré-estabelecido.
+As tabelas \ref{tab:resultadotestescarregadorinducao} e \ref{tab:resultadotestescarregadorinducao2} expõe os resultados obtidos.
 
-A construção vai demandar o uso de 3 capacitores, 1 resistor, 1 transistor, vários indutores (bobinas) e uma fonte de tensão contínua afim de se obter um circuito semelhante ao demonstrado na última figura.
+\begin{table}[]
+\centering
+\caption{Resultados dos testes.}
+\label{tab:resultadotestescarregadorinducao}
+\begin{tabular}{l|l|l|l|}
+\cline{2-4}
+\textbf{}                                        & \textbf{Nº de espiras} & \textbf{Tensão (v)} & \textbf{Corrente (mA)} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Bobina 1 (6 mm)}}   & 6                      & 9.8                 & -                      \\ \hline
+\multicolumn{1}{|l|}{\textbf{Bobina 2 (0.6 mm)}} & 20                     & 6.2                 & 0.7                    \\ \hline
+\end{tabular}
+\end{table}
 
+\begin{table}[]
+\centering
+\caption{Resultados dos testes 2.}
+\label{tab:resultadotestescarregadorinducao2}
+\begin{tabular}{l|l|l|l|}
+\cline{2-4}
+\textbf{}                                        & \textbf{Nº de espiras} & \textbf{Tensão (v)} & \textbf{Corrente (mA)} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Bobina 1 (0.6 mm)}} & 20                     & 5.6                 & -                      \\ \hline
+\multicolumn{1}{|l|}{\textbf{Bobina 2 (0.6 mm)}} & 20                     & 2.62                & 2.2                    \\ \hline
+\end{tabular}
+\end{table}
+
+Nos testes iniciais foi possível analisar o desempenho do sistema para que as devidas alterações pudessem ser feitas. 
+Identificou-se que a bobina secundária deveria estar posicionada no inferior da estrutura da base do robô, visto que esta, devido ao material que a compõe, interfere de forma prejudicial ao fluxo que chega à segunda bobina. 
+Algumas alterações nos componentes do circuito também se fizeram necessárias para se iniciar a segunda fase de testes, na tentativa de atingir os valores necessários para a carga da bateria.
+Alterando os componentes os seguintes resultados foram obtidos:
 
 \subsection{Carregador com plug magnético}
 
@@ -197,9 +226,9 @@ Na tabela a seguir é um comparativo entre baterias e supercapacitores, também 
 
 \begin{table}[]
 \centering
-\caption{Tabela 1 Bateria vs supercondensador.}
+\caption{Bateria vs supercondensador.}
 \label{tab:supervbat}
-\begin{tabular}{lll}
+\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{1}{|l|}{\textbf{}}                                                                & \multicolumn{1}{l|}{\textbf{Bateria}} & \multicolumn{1}{l|}{\textbf{Supercondensador}} \\ \hline
 \multicolumn{1}{|l|}{Tempo de carga}                                                           & \multicolumn{1}{l|}{1 a 5 horas}      & \multicolumn{1}{l|}{0,3 a 30 segundos}         \\ \hline
@@ -208,7 +237,7 @@ Na tabela a seguir é um comparativo entre baterias e supercapacitores, também 
 \multicolumn{1}{|l|}{Cliclo de vida}                                                           & \multicolumn{1}{l|}{1000}             & \multicolumn{1}{l|}{\textgreater 500000}       \\ \hline
 \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Densidade de\\ Potência (W/kg)\end{tabular}}   & \multicolumn{1}{l|}{\textless 1000}   & \multicolumn{1}{l|}{\textless 10000}           \\ \hline
 \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Eficiência de carga\\ e descarga\end{tabular}} & \multicolumn{1}{l|}{0,7 a 0,85}       & \multicolumn{1}{l|}{0,85 a 0,98}               \\ \hline
-\begin{tabular}[c]{@{}l@{}}Temperatura de\\ operação\end{tabular}                              & -20 a 100 oC                          & -40 a 65 oC                                   
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Temperatura de\\ operação\end{tabular}}                              & \multicolumn{1}{l|}{-20 a 100 oC}                          & \multicolumn{1}{l|}{-40 a 65 oC}                                   
 \end{tabular}
 \end{table}
 
